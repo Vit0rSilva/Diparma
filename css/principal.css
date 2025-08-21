@@ -1,0 +1,95 @@
+@charset "UTF-8";
+.primary-cor {
+  color: #042404;
+}
+
+.primary-apoio-cor {
+  color: #256020;
+}
+
+.secondary-cor {
+  color: #D39724;
+}
+
+.secondary-apoio-cor {
+  color: #E4B856;
+}
+
+html, body {
+  margin: 0px;
+  padding: 0px;
+  height: 100%;
+  background-color: #F8F9FA !important;
+}
+
+/*Fontes*/
+.playfair-display, h2, h1 {
+  font-family: "Playfair Display", serif;
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-style: normal;
+}
+
+.lora, .legenda, p {
+  font-family: "Lora", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/*Formatação de textos*/
+h1 {
+  color: #212529;
+  font-size: 40.5px;
+  margin: 0px;
+}
+
+h2 {
+  color: #343A40;
+  font-size: 27px;
+  margin: 0px;
+}
+
+p {
+  color: #495057;
+  font-size: 18px;
+  margin: 0px;
+}
+
+.legenda {
+  color: #495057;
+  font-size: 12px;
+  margin: 0px;
+}
+
+/*Home*/
+.box-home {
+  margin-top: 15vh;
+}
+.box-home .button-cardapio {
+  border: none;
+  border-radius: 30px;
+  padding: 8px 10px;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  background: #042404;
+  transition: all 0.5s;
+}
+.box-home .button-cardapio p {
+  margin: 0px 90px 0px 20px;
+  color: #EBFBEE;
+}
+.box-home .button-cardapio .button-ceta {
+  padding: 4px 8px;
+  background: #EBFBEE;
+  border-radius: 50%;
+}
+.box-home .button-cardapio i {
+  font-weight: 900;
+}
+.box-home .button-cardapio:hover {
+  background: #256020;
+}
+
+/*# sourceMappingURL=principal.css.map */

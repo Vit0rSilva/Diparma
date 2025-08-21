@@ -1,0 +1,127 @@
+//Cor primaria e secondaria
+$primary: #042404; 
+$primary-apoio: #256020;
+$primary-pressed: #021E05;
+$secondary: #D39724;
+$secondary-apoio: #E4B856;
+$secondary-pressed: #B57A1A;
+//Cor Semantica
+$sucesso: #2D9114;
+$informação: #007193;
+$alerta:#BC9101;
+$perigo:#B71B6C;
+//Cor Texto
+$titulo-cor: #212529;
+$subtitulo-cor: #343A40;
+$texto-corrido-cor: #495057;
+$legenda-cor: #495057;
+//Cor Plano de fundo
+$plano-de-fundo: #F8F9FA;
+$verde-claro: #EBFBEE;
+$deligado: #EBEBEB;
+
+//Cor Classes
+.primary-cor{
+    color: $primary;
+}
+.primary-apoio-cor{
+    color: $primary-apoio;
+}
+.secondary-cor{
+    color: $secondary;
+}
+.secondary-apoio-cor{
+    color: $secondary-apoio;
+}
+//Tamanhos textos
+
+$titulo-tamanho: 40.5px;
+$subtitulo-tamanho: 27px;
+$texto-corrido-tamanho: 18px;
+$legenda-tamanho: 12px;
+$sublegenda-tamanho: 8px;
+
+//Formatação 0px
+html, body{
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+    background-color: $plano-de-fundo !important;
+}
+
+
+/*Fontes*/
+.playfair-display{
+    font-family: "Playfair Display", serif;
+    font-optical-sizing: auto;
+    font-weight: 800;
+    font-style: normal;
+}
+
+.lora{
+    font-family: "Lora", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+}
+
+/*Formatação de textos*/
+h1{
+    color: $titulo-cor;
+    font-size: $titulo-tamanho;
+    @extend .playfair-display;
+    margin: 0px;
+}
+h2{
+    color: $subtitulo-cor;
+    font-size: $subtitulo-tamanho;
+    @extend .playfair-display;
+    margin: 0px;
+}
+p{
+    color: $texto-corrido-cor;
+    font-size: $texto-corrido-tamanho;
+    @extend .lora;
+    margin: 0px;
+}
+.legenda{
+    color: $legenda-cor;
+    font-size: $legenda-tamanho;
+    @extend .lora;
+    margin: 0px;
+}
+
+/*Home*/
+
+.box-home{
+    margin-top: 15vh;
+    .button-cardapio{
+        border: none;
+        border-radius: 30px;
+        padding: 8px 10px;
+        margin-top: 20px;
+        display: flex;
+        align-items: center;
+        background: $primary;
+        transition: all 0.5s;
+        p{
+            margin: 0px 90px 0px 20px;
+            color: $verde-claro;
+        }
+        .button-ceta{
+            padding: 4px 8px;
+            background: $verde-claro;
+            border-radius: 50%;
+        }
+        i{
+            font-weight: 900;
+        }
+
+        &:hover{
+            background: $primary-apoio;
+        }
+    }
+
+    
+
+}
