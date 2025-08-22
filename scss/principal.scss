@@ -122,6 +122,35 @@ p{
         }
     }
 
-    
+}
+.swiper {
+    width: 600px;
+    height: 300px;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    overflow: visible !important;
+}
 
+/* Deixa os botões no canto inferior direito */
+.swiper-button-prev,
+.swiper-button-next {
+  position: absolute !important;
+  bottom: 10px !important;
+  top: auto !important;
+  width: 35px !important;
+  height: 35px !important;
+  background-color: #000000cc !important;
+  border-radius: 50% !important;
+  color: white !important;
+  font-size: 18px !important;
+}
+
+.swiper-button-prev {
+    right: 60px !important;
+    left: none !important;
+}
+
+.swiper-button-prev, .swiper-rtl .swiper-button-next {
+    left: var(--swiper-navigation-sides-offset, 510px) !important;
+    
 }
