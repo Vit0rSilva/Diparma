@@ -258,20 +258,41 @@ p{
                 transition: all 0.3s ease;
             }
             
-            .box-ativado{
+            .box-ativado {
                 display: flex;
                 justify-content: center;
-                .ativado{
-                    background: $primary;
-                    color: $verde-claro;
-                    width: 90px;
-                    padding: 10px;
-                    border-radius: 5px;
-                    i{
-                        font-size: 50px;
-                        color: $verde-claro;
-                    }
+                transform: scale(0.1);
+                opacity: 0;
+                transition: opacity 0.4s ease, transform 0.4s ease;
+              
+                &.ativo {
+                  transform: scale(1);
+                  opacity: 1;
                 }
+              
+                .ativado {
+                  background: $primary;
+                  color: $verde-claro;
+                  width: 90px;
+                  padding: 10px;
+                  border-radius: 5px;
+              
+                  i {
+                    font-size: 50px;
+                    color: $verde-claro;
+                  }
+                }
+              }
+              
+            
+            .box-ativado.show {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            button.ativo .box-ativado {
+                opacity: 1;
+                transform: scale(1);
             }
 
             

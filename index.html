@@ -158,16 +158,55 @@
                 <h1>Colêntanea de produtos</h1>
                 <nav class="categorias" aria-label="Categorias de pratos">
                     <ul>
-                      <li><button><div class="box-ativado"><div class="ativado"><i class="ph ph-medal"></i></div></div><h2>Popular</h2></button></li>
-                      <li><button><i class="ph ph-percent"></i><h2>Promoção</h2></button></li>
-                      <li><button><i class="ph ph-heart-straight"></i><h2>Classico</h2></button></li>
-                      <li><button><i class="ph ph-shooting-star"></i><h2>Recomendaçoes</h2></button></li>
-                      <li><button><i class="ph ph-bowl-food"></i><h2>Massas</h2></button></li>
-                      <li><button><i class="ph ph-ice-cream"></i><h2>Sobremesas</h2></button></li>
-                    </ul>
+                        <li>
+                          <button class="ativo">
+                            <div class="box-ativado">
+                              <div class="ativado"><i class="ph ph-medal"></i></div>
+                            </div>
+                            <h2>Popular</h2>
+                          </button>
+                        </li>
+                        <li><button><i class="ph ph-percent"></i><h2>Promoção</h2></button></li>
+                        <li><button><i class="ph ph-heart-straight"></i><h2>Clássico</h2></button></li>
+                        <li><button><i class="ph ph-shooting-star"></i><h2>Recomendações</h2></button></li>
+                        <li><button><i class="ph ph-bowl-food"></i><h2>Massas</h2></button></li>
+                        <li><button><i class="ph ph-ice-cream"></i><h2>Sobremesas</h2></button></li>
+                      </ul>
                 </nav>
             </div>
-
+            <div class="col">
+                <div class="swiper-carrosel-pratos">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="box-descontos">
+                                <img src="img/risoto-camarao.png" alt="">
+                                <div class="desconto">
+                                    <p>Risoto de camarão</p>
+                                    <h2>R$50.00 por R$39.99</h2>
+                                </div>
+                            </div>
+                        </div>
+                      <div class="swiper-slide">
+                        <div class="box-descontos">
+                            <img src="img/risoto.png" alt="">
+                                <div class="desconto">
+                                    <p>Risoto de Tomate</p>
+                                    <h2>R$50.00 por R$39.99</h2>
+                                </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                  
+                    <div class="swiper-button-prev">
+                        <i class="ph ph-arrow-left"></i>
+                    </div>
+                    <div class="swiper-button-next">
+                        <i class="ph ph-arrow-right"></i>
+                    </div>
+                </div>
+            </div>
+            
         </div>
     </section>
     <script type="module" src="swiper.js"></script>
@@ -176,11 +215,11 @@
 
         items.forEach(button => {
             button.addEventListener("mouseenter", () => {
-                const icone = button.querySelector(".ph"); // pega o ícone atual
+                const icone = button.querySelector(".ph");
 
-                // Evita duplicar
+                // Se já tem box-ativado, não recria
                 if (!button.querySelector(".box-ativado") && icone) {
-                    icone.remove(); // remove o ícone solto
+                    icone.remove();
 
                     const box = document.createElement("div");
                     box.classList.add("box-ativado");
@@ -188,20 +227,29 @@
                     const ativado = document.createElement("div");
                     ativado.classList.add("ativado");
 
-                    ativado.appendChild(icone); // joga o ícone dentro do .ativado
+                    ativado.appendChild(icone);
                     box.appendChild(ativado);
+                    button.prepend(box);
 
-                    button.prepend(box); // adiciona no início do botão
+                    // Aparece suavemente
+                    setTimeout(() => box.classList.add("show"), 10);
                 }
             });
 
             button.addEventListener("mouseleave", () => {
+                // Não remove o ativo do Popular
+                if (button.classList.contains("ativo")) return;
+
                 const box = button.querySelector(".box-ativado");
                 if (box) {
-                    const icone = box.querySelector(".ph"); // pega o ícone de dentro
-                    box.remove(); // remove a box
+                    const icone = box.querySelector(".ph");
 
-                    if (icone) button.prepend(icone); // devolve o ícone pro botão
+                    box.classList.remove("show");
+
+                    setTimeout(() => {
+                        box.remove();
+                        if (icone) button.prepend(icone);
+                    }, 300);
                 }
             });
         });
