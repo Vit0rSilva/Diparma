@@ -23,7 +23,7 @@ html, body {
 }
 
 /*Fontes*/
-.playfair-display, h2, h1 {
+.playfair-display, h3, h2, h1 {
   font-family: "Playfair Display", serif;
   font-optical-sizing: auto;
   font-weight: 800;
@@ -41,25 +41,31 @@ html, body {
 h1 {
   color: #212529;
   font-size: 40.5px;
-  margin: 0px;
+  margin-bottom: 0px !important;
 }
 
 h2 {
   color: #343A40;
   font-size: 27px;
-  margin: 0px;
+  margin-bottom: 0px !important;
+}
+
+h3 {
+  color: #343A40;
+  font-size: 22px !important;
+  margin-bottom: 0px !important;
 }
 
 p {
   color: #495057;
   font-size: 18px;
-  margin: 0px;
+  margin-bottom: 0px !important;
 }
 
 .legenda {
   color: #495057;
   font-size: 12px;
-  margin: 0px;
+  margin-bottom: 0px !important;
 }
 
 /*---------------Home---------------*/
@@ -148,8 +154,8 @@ p {
   background: transparent;
   width: 100%;
   height: 75%;
-  border-radius: 20px 5px 20px 5px;
   overflow: hidden;
+  border-radius: 20px 5px 20px 5px;
   position: relative;
 }
 .box-descontos .desconto {
@@ -263,6 +269,45 @@ p {
 .box-carrosel-pedidos .categorias ul i {
   font-size: 50px;
   color: #042404;
+}
+
+.swiper-carrosel-pratos {
+  margin-top: 50px;
+  width: 100%;
+  height: 600px;
+}
+.swiper-carrosel-pratos p {
+  font-size: 12px;
+}
+.swiper-carrosel-pratos i {
+  color: #256020;
+  margin-right: 5px;
+}
+.swiper-carrosel-pratos .bow-img {
+  width: 100%;
+  height: 75%;
+  overflow: hidden;
+  border-radius: 5px;
+  position: relative;
+}
+.swiper-carrosel-pratos .bow-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  border-radius: 5px;
+}
+.swiper-carrosel-pratos .bow-img .preco {
+  border-radius: 5px;
+  background: #042404;
+  padding: 5px;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+.swiper-carrosel-pratos .bow-img .preco h2 {
+  color: #EBFBEE;
 }
 
 /*# sourceMappingURL=principal.css.map */

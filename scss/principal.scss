@@ -37,6 +37,7 @@ $deligado: #EBEBEB;
 
 $titulo-tamanho: 40.5px;
 $subtitulo-tamanho: 27px;
+$subsubtitulo-tamanho: 22px;
 $texto-corrido-tamanho: 18px;
 $legenda-tamanho: 12px;
 $sublegenda-tamanho: 8px;
@@ -70,25 +71,31 @@ h1{
     color: $titulo-cor;
     font-size: $titulo-tamanho;
     @extend .playfair-display;
-    margin: 0px;
+    margin-bottom: 0px !important;
 }
 h2{
     color: $subtitulo-cor;
     font-size: $subtitulo-tamanho;
     @extend .playfair-display;
-    margin: 0px;
+    margin-bottom: 0px !important;
+}
+h3{
+    color: $subtitulo-cor;
+    font-size: $subsubtitulo-tamanho !important;
+    @extend .playfair-display;
+    margin-bottom: 0px !important;
 }
 p{
     color: $texto-corrido-cor;
     font-size: $texto-corrido-tamanho;
     @extend .lora;
-    margin: 0px;
+    margin-bottom: 0px !important;
 }
 .legenda{
     color: $legenda-cor;
     font-size: $legenda-tamanho;
     @extend .lora;
-    margin: 0px;
+    margin-bottom: 0px !important;
 }
 
 /*---------------Home---------------*/
@@ -183,8 +190,8 @@ p{
     background: transparent;
     width: 100%;
     height: 75%;
-    border-radius: 20px 5px 20px 5px;
     overflow: hidden;
+    border-radius: 20px 5px 20px 5px;
     position: relative;
 
     .desconto{
@@ -276,7 +283,7 @@ p{
                   width: 90px;
                   padding: 10px;
                   border-radius: 5px;
-              
+               
                   i {
                     font-size: 50px;
                     color: $verde-claro;
@@ -312,4 +319,47 @@ p{
             
         }
     }
+}
+
+.swiper-carrosel-pratos{
+    margin-top: 50px;
+    width: 100%;
+    height: 600px;
+    p{
+        font-size: $legenda-tamanho;           
+    }
+    i{
+        color: $primary-apoio;
+        margin-right: 5px;
+    }
+    
+
+        .bow-img{
+            width: 100%;
+            height: 75%;
+            overflow: hidden;
+            border-radius: 5px;
+            position: relative;
+
+            img{
+                width: 100%;    
+                height: 100%;   
+                object-fit: cover;  
+                object-position: center;    
+                display: block;
+                border-radius: 5px;
+            }
+
+            .preco{
+                h2{
+                    color: $verde-claro;
+                }
+                border-radius: 5px;
+                background: $primary;
+                padding: 5px;
+                position: absolute;
+                top: 5px;
+                right: 5px;
+            }
+        }
 }
