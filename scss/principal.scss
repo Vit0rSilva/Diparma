@@ -33,6 +33,9 @@ $deligado: #EBEBEB;
 .secondary-apoio-cor{
     color: $secondary-apoio;
 }
+.verde-claro-cor{
+    color: $verde-claro;
+}
 //Tamanhos textos
 
 $titulo-tamanho: 40.5px;
@@ -132,16 +135,18 @@ p{
 }
 
 /*Swiper carrosel*/
-.swiper {
+.swiper-carrosel {
     margin-top: 50px;
     width: 600px;
     height: 300px;
     margin-left: 0 !important;
     margin-right: 0 !important;
     overflow: hidden !important;
+    
+    .swiper-button-prev, .swiper-rtl .swiper-button-next {
+        left: var(--swiper-navigation-sides-offset, 510px) !important;
+    }
 }
-
-/* Deixa os botões no canto inferior direito */
 .swiper-button-prev,
 .swiper-button-next {
   position: absolute !important;
@@ -168,21 +173,11 @@ p{
     content: '' !important;
 }
 
-.swiper-button-prev {
-    right: 60px !important;
-    left: none !important;
-}
-
-.swiper-button-prev, .swiper-rtl .swiper-button-next {
-    left: var(--swiper-navigation-sides-offset, 510px) !important;
-    
-}
-
 /*Icone bolinha*/
 .swiper-pagination-bullet {
-    
     background: $primary !important;
 }
+
 
 /*Promoçoes*/
 
@@ -322,44 +317,47 @@ p{
 }
 
 .swiper-carrosel-pratos{
+    overflow: hidden !important;
     margin-top: 50px;
     width: 100%;
-    height: 600px;
-    p{
-        font-size: $legenda-tamanho;           
+    height: 700px !important;
+    .swiper-wrapper{
+        height: 92% !important;
+        /*Icone bolinha*/
     }
-    i{
-        color: $primary-apoio;
-        margin-right: 5px;
+    p{
+        font-size: $legenda-tamanho;
+    }
+    .bow-img{
+        width: 100%;
+        height: 75%;
+        overflow: hidden;
+        border-radius: 5px;
+        position: relative;
+
+        img{
+            width: 100%;    
+            height: 100%;   
+            object-fit: cover;  
+            object-position: center;    
+            display: block;
+            border-radius: 5px;
+        }
+
+        .preco{
+            h2{
+                color: $verde-claro;
+            }
+            border-radius: 5px;
+            background: $primary;
+            padding: 5px;
+            position: absolute;
+            top: 5px;
+            left: 5px;
+        }
     }
     
-
-        .bow-img{
-            width: 100%;
-            height: 75%;
-            overflow: hidden;
-            border-radius: 5px;
-            position: relative;
-
-            img{
-                width: 100%;    
-                height: 100%;   
-                object-fit: cover;  
-                object-position: center;    
-                display: block;
-                border-radius: 5px;
-            }
-
-            .preco{
-                h2{
-                    color: $verde-claro;
-                }
-                border-radius: 5px;
-                background: $primary;
-                padding: 5px;
-                position: absolute;
-                top: 5px;
-                right: 5px;
-            }
-        }
+    .swiper-button-prev, .swiper-rtl .swiper-button-next {
+        left: var(--swiper-navigation-sides-offset, 1200px) !important;
+    }
 }

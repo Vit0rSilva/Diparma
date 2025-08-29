@@ -15,6 +15,10 @@
   color: #E4B856;
 }
 
+.verde-claro-cor {
+  color: #EBFBEE;
+}
+
 html, body {
   margin: 0px;
   padding: 0px;
@@ -99,7 +103,7 @@ p {
 }
 
 /*Swiper carrosel*/
-.swiper {
+.swiper-carrosel {
   margin-top: 50px;
   width: 600px;
   height: 300px;
@@ -107,8 +111,10 @@ p {
   margin-right: 0 !important;
   overflow: hidden !important;
 }
+.swiper-carrosel .swiper-button-prev, .swiper-carrosel .swiper-rtl .swiper-button-next {
+  left: var(--swiper-navigation-sides-offset, 510px) !important;
+}
 
-/* Deixa os botões no canto inferior direito */
 .swiper-button-prev,
 .swiper-button-next {
   position: absolute !important;
@@ -133,15 +139,6 @@ p {
 
 .swiper-button-prev:after, .swiper-rtl .swiper-button-next:after {
   content: "" !important;
-}
-
-.swiper-button-prev {
-  right: 60px !important;
-  left: none !important;
-}
-
-.swiper-button-prev, .swiper-rtl .swiper-button-next {
-  left: var(--swiper-navigation-sides-offset, 510px) !important;
 }
 
 /*Icone bolinha*/
@@ -272,16 +269,17 @@ p {
 }
 
 .swiper-carrosel-pratos {
+  overflow: hidden !important;
   margin-top: 50px;
   width: 100%;
-  height: 600px;
+  height: 700px !important;
+}
+.swiper-carrosel-pratos .swiper-wrapper {
+  height: 92% !important;
+  /*Icone bolinha*/
 }
 .swiper-carrosel-pratos p {
   font-size: 12px;
-}
-.swiper-carrosel-pratos i {
-  color: #256020;
-  margin-right: 5px;
 }
 .swiper-carrosel-pratos .bow-img {
   width: 100%;
@@ -304,10 +302,13 @@ p {
   padding: 5px;
   position: absolute;
   top: 5px;
-  right: 5px;
+  left: 5px;
 }
 .swiper-carrosel-pratos .bow-img .preco h2 {
   color: #EBFBEE;
+}
+.swiper-carrosel-pratos .swiper-button-prev, .swiper-carrosel-pratos .swiper-rtl .swiper-button-next {
+  left: var(--swiper-navigation-sides-offset, 1200px) !important;
 }
 
 /*# sourceMappingURL=principal.css.map */
