@@ -322,7 +322,7 @@ p{
     width: 100%;
     height: 700px !important;
     .swiper-wrapper{
-        height: 92% !important;
+        height: 89% !important;
         /*Icone bolinha*/
     }
     p{
@@ -356,8 +356,138 @@ p{
             left: 5px;
         }
     }
-    
-    .swiper-button-prev, .swiper-rtl .swiper-button-next {
-        left: var(--swiper-navigation-sides-offset, 1200px) !important;
+}
+
+
+/*Box tradição*/
+.box-tradicao{
+    margin-top: 120px;
+    h1{
+        margin-bottom: 20px;
     }
+
+    .box-chef{
+        margin-top: 20px;
+        display: flex;
+        align-items: center;
+        .img-chef{
+            width: 150px;
+            height: 150px;
+            margin-right: 20px;
+            img{
+                width: 100%;    
+                height: 100%;
+                border-radius: 50%;
+                object-fit: cover;  
+                object-position: center;    
+            }
+        }
+
+        .nome-frase{
+            p{
+                padding: 2px 0px 2px 10px;
+                border-left: 3px solid $primary;
+                font-style: italic;
+                margin-left: 10px;
+                margin-top: 10px;
+            }
+            small{
+                margin-left: 20px;
+                color:$legenda-cor;
+                font-size: $legenda-tamanho;
+                @extend .lora;
+            }
+        }
+    }
+}
+
+
+
+
+/*--------------------Comentarios--------------------*/
+
+.box-comentarios{
+    margin-top: 100px;
+    button{
+        background: none;
+        border: none;
+        transition: all 0.3s ease;
+        margin: 0 20px;
+        color: $primary;
+    }
+
+    .swiper{
+        height: 390px;
+    }
+
+    .swiper-slide{
+        background: $verde-claro;
+        border-radius: 20px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+
+        .box-prato-comentario{
+            position: relative;
+            .informacao{
+                display: flex;
+                align-items: center;
+                margin-left: 10px;
+                i{
+                    font-size: 20px;
+                }
+                p{
+                    margin-left: 5px;
+                }
+            }
+
+            .img-prato{
+                position: absolute;
+                width: 200px;
+                height: 200px;
+                top:40px;
+                right: -80px;
+                overflow: hidden;
+                img{
+                    width: 100%;    
+                    height: 100%;   
+                    border-radius: 50%;
+                    object-fit: cover;  
+                    object-position: center;    
+                    display: block;
+                }
+            }
+        }
+        .box-comentario{
+            margin-top: auto;
+            .nome-data{
+                display: flex;
+                align-items: flex-end;
+                small{
+                    margin-left: 10px;
+                    color: $legenda-cor;
+                    font-size: $legenda-tamanho;
+                    @extend .lora;
+                }
+            }
+            .comentario{
+                display: flex;
+                .img-perf{
+                    width: 50px;
+                    height: 50px;
+                    overflow: hidden;
+                    margin-top: 10px;
+                    img{
+                        width: 100%;    
+                        height: 100%;   
+                        border-radius: 50%; 
+                        object-fit: cover;  
+                        object-position: center;    
+                        display: block;
+                    }
+                }
+            }
+        }
+    }
+
 }

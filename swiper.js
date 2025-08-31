@@ -18,7 +18,7 @@ const swiper = new Swiper(
     }
 );
 
-const swiperCarrosel = new Swiper('.swiper-carrosel-pratos', {
+const swiperCarroselPratos = new Swiper('.swiper-carrosel-pratos', {
   slidesPerView: 1.4,
   spaceBetween: 30,
   grid:{
@@ -62,4 +62,27 @@ const swiperCarrosel = new Swiper('.swiper-carrosel-pratos', {
     prevEl: ".swiper-button-prev",
   },
 
+});
+
+var swiperComentario = new Swiper(".swiper-comentario", {
+    slidesPerView: 1.5, // Mostra 3 slides ao mesmo tempo
+    spaceBetween: 20, // Espaço entre os slides
+    centeredSlides: true, // Centraliza o slide ativo
+    breakpoints:{
+        0:{
+            slidesPerView: 1.5,
+        },
+        420:{
+            slidesPerView: 1.5,
+        },
+        768:{
+            slidesPerView: 2.5,
+        },
+        992:{
+            slidesPerView: 2.5,
+        },
+        1200:{
+            slidesPerView: 2.5,
+        },
+    },
 });
