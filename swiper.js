@@ -79,10 +79,10 @@ var swiperComentario = new Swiper(".swiper-comentario", {
             slidesPerView: 2.5,
         },
         992:{
-            slidesPerView: 2.5,
+            slidesPerView: 3.5,
         },
         1200:{
-            slidesPerView: 2.5,
+            slidesPerView: 3.5,
         },
     },
 });

@@ -34,7 +34,7 @@ html, body {
   font-style: normal;
 }
 
-.lora, .box-comentarios .swiper-slide .box-comentario .nome-data small, .box-tradicao .box-chef .nome-frase small, .legenda, p {
+.lora, .box-comentarios .swiper .swiper-slide .slide-content .box-comentario .nome-data small, .box-tradicao .box-chef .nome-frase small, .legenda, p {
   font-family: "Lora", serif;
   font-optical-sizing: auto;
   font-weight: 400;
@@ -357,38 +357,49 @@ p {
   color: #042404;
 }
 .box-comentarios .swiper {
-  height: 390px;
+  height: 415px;
+  margin-top: 40px;
 }
-.box-comentarios .swiper-slide {
+.box-comentarios .swiper .swiper-slide {
+  display: flex;
+  align-items: flex-end;
+}
+.box-comentarios .swiper .swiper-slide .slide-content {
   background: #EBFBEE;
   border-radius: 20px;
   padding: 20px;
   display: flex;
   flex-direction: column;
+  transition: all 0.3s ease;
+  transform: scale(0.9);
+  transform-origin: bottom center;
+  opacity: 0.7;
+  height: 100%;
 }
-.box-comentarios .swiper-slide .box-prato-comentario {
+.box-comentarios .swiper .swiper-slide .slide-content .box-prato-comentario {
   position: relative;
 }
-.box-comentarios .swiper-slide .box-prato-comentario .informacao {
+.box-comentarios .swiper .swiper-slide .slide-content .box-prato-comentario .informacao {
   display: flex;
   align-items: center;
   margin-left: 10px;
 }
-.box-comentarios .swiper-slide .box-prato-comentario .informacao i {
+.box-comentarios .swiper .swiper-slide .slide-content .box-prato-comentario .informacao i {
   font-size: 20px;
 }
-.box-comentarios .swiper-slide .box-prato-comentario .informacao p {
+.box-comentarios .swiper .swiper-slide .slide-content .box-prato-comentario .informacao p {
   margin-left: 5px;
 }
-.box-comentarios .swiper-slide .box-prato-comentario .img-prato {
+.box-comentarios .swiper .swiper-slide .slide-content .box-prato-comentario .img-prato {
   position: absolute;
-  width: 200px;
-  height: 200px;
-  top: 40px;
-  right: -80px;
+  width: 260px;
+  height: 260px;
+  top: 5px;
+  right: -63px;
   overflow: hidden;
+  z-index: 100; /* Colocar mais alto para garantir */
 }
-.box-comentarios .swiper-slide .box-prato-comentario .img-prato img {
+.box-comentarios .swiper .swiper-slide .slide-content .box-prato-comentario .img-prato img {
   width: 100%;
   height: 100%;
   border-radius: 50%;
@@ -396,34 +407,41 @@ p {
   object-position: center;
   display: block;
 }
-.box-comentarios .swiper-slide .box-comentario {
+.box-comentarios .swiper .swiper-slide .slide-content .box-comentario {
   margin-top: auto;
 }
-.box-comentarios .swiper-slide .box-comentario .nome-data {
+.box-comentarios .swiper .swiper-slide .slide-content .box-comentario .nome-data {
   display: flex;
   align-items: flex-end;
 }
-.box-comentarios .swiper-slide .box-comentario .nome-data small {
+.box-comentarios .swiper .swiper-slide .slide-content .box-comentario .nome-data small {
   margin-left: 10px;
+  margin-bottom: 2px;
   color: #495057;
   font-size: 12px;
 }
-.box-comentarios .swiper-slide .box-comentario .comentario {
+.box-comentarios .swiper .swiper-slide .slide-content .box-comentario .comentario {
   display: flex;
 }
-.box-comentarios .swiper-slide .box-comentario .comentario .img-perf {
-  width: 50px;
-  height: 50px;
+.box-comentarios .swiper .swiper-slide .slide-content .box-comentario .comentario .img-perf {
+  width: 100px;
+  height: 100px;
   overflow: hidden;
   margin-top: 10px;
 }
-.box-comentarios .swiper-slide .box-comentario .comentario .img-perf img {
+.box-comentarios .swiper .swiper-slide .slide-content .box-comentario .comentario .img-perf img {
   width: 100%;
   height: 100%;
   border-radius: 50%;
   object-fit: cover;
   object-position: center;
   display: block;
+}
+.box-comentarios .swiper .swiper-slide.swiper-slide-active .slide-content {
+  transform: scale(1);
+  opacity: 1;
+  z-index: 10;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
 /*# sourceMappingURL=principal.css.map */
