@@ -64,7 +64,7 @@ const swiperCarroselPratos = new Swiper('.swiper-carrosel-pratos', {
 
 });
 
-var swiperComentario = new Swiper(".swiper-comentario", {
+const swiperComentario = new Swiper(".swiper-comentario", {
     slidesPerView: 1.5, // Mostra 3 slides ao mesmo tempo
     spaceBetween: 20, // Espaço entre os slides
     centeredSlides: true, // Centraliza o slide ativo
@@ -85,4 +85,21 @@ var swiperComentario = new Swiper(".swiper-comentario", {
             slidesPerView: 3.5,
         },
     },
+});
+
+
+const boxButton = document.querySelector(".comentario-carrosel .box-button");
+
+// Assim que encostar → empurra pra fora
+swiperComentario.on("touchStart", () => {
+  boxButton.classList.remove("show");
+  boxButton.classList.add("hide");
+});
+
+// Quando voltar para o slide inicial → traz de volta
+swiperComentario.on("slideChange", () => {
+  if (swiperComentario.activeIndex === 0) {
+    boxButton.classList.remove("hide");
+    boxButton.classList.add("show");
+  }
 });
