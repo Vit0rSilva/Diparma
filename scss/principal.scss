@@ -18,6 +18,7 @@ $legenda-cor: #495057;
 //Cor Plano de fundo
 $plano-de-fundo: #F8F9FA;
 $verde-claro: #EBFBEE;
+$amarelo-claro: #FDF7F1;
 $desligado: #EBEBEB;
 
 //Cor Classes
@@ -51,6 +52,28 @@ html, body{
     padding: 0px;
     height: 100%;
     background-color: $plano-de-fundo !important;
+}
+
+/*Button*/
+%button-primary{
+    button{
+        white-space: nowrap;
+        transition: background 0.3s ease;
+        background: $primary;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 50px;
+        p{
+            color: $verde-claro;
+        }
+    
+        &:hover{
+            background: $primary-apoio;
+        }
+        &:active{
+            background: $primary-pressed;
+        }
+    }
 }
 
 
@@ -97,6 +120,12 @@ p{
 .legenda{
     color: $legenda-cor;
     font-size: $legenda-tamanho;
+    @extend .lora;
+    margin-bottom: 0px !important;
+}
+a{
+    color: $texto-corrido-cor;
+    font-size: $texto-corrido-tamanho;
     @extend .lora;
     margin-bottom: 0px !important;
 }
@@ -386,7 +415,7 @@ p{
         .nome-frase{
             p{
                 padding: 2px 0px 2px 10px;
-                border-left: 3px solid $primary;
+                border-left: 3px solid $secondary;
                 font-style: italic;
                 margin-left: 10px;
                 margin-top: 10px;
@@ -408,19 +437,44 @@ p{
 
 .box-comentarios{
     margin-top: 100px;
+    .ver-mais{
+        margin-top: 30px;
+        display: flex;
+        align-items: center;
+
+        hr{
+            width: 100%;
+            margin: 0;
+            background: $primary;
+            height: 5px;
+            opacity: 1;
+            
+        }
+        @extend %button-primary;
+    }
     button{
         background: none;
         border: none;
-        transition: all 0.3s ease;
         margin: 0 20px;
-        color: $primary;
+        transition: all 0.3s ease;
+        h2{
+            transition: color 0.3s ease;
+        }
+        &:hover{
+            h2{
+                color: $secondary-apoio;
+            }
+        }
     }
 
     .ativado{
-        border: 2px solid $primary;
+        border: 2px solid $secondary;
         border-radius: 10px;
         h2{
-            color: $primary;
+            color: $secondary;
+        }
+        &:hover{
+            border: 2px solid $secondary-apoio;
         }
     }
 
@@ -450,7 +504,7 @@ p{
             }
 
             .ativado{
-                background: $primary;
+                background: $secondary;
                 p{
                     color: $verde-claro;
                 }
@@ -463,9 +517,9 @@ p{
                 margin: 20px 0;
                 width: 200px;
                 &:hover{
-                    background: $primary-apoio;
+                    background: $secondary-apoio;
                     p{
-                        color: $verde-claro;
+                        color: $amarelo-claro;
                     }
                 }
             }
@@ -564,3 +618,31 @@ p{
     
 }
 
+
+/*-----------------Footer-----------------*/
+
+footer{
+    margin-top: 60px;
+    background: $primary;
+    padding: 20px 0;
+    .img-logo{
+        img{
+            width: 300px;
+            height: 300px;
+        }
+    }
+    .box-links{
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        padding: 40px 20px 0 20px;
+        .box-link{
+            h2{
+                color: $verde-claro;
+            }
+            p{
+                color: $verde-claro;
+            }
+        }
+    }
+}
