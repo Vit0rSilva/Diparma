@@ -128,6 +128,7 @@ a{
     font-size: $texto-corrido-tamanho;
     @extend .lora;
     margin-bottom: 0px !important;
+    text-decoration: none!important;
 }
 
 /*---------------Home---------------*/
@@ -637,12 +638,19 @@ footer{
         width: 100%;
         padding: 40px 20px 0 20px;
         .box-link{
+            display: flex;
+            flex-direction: column;
             h2{
                 color: $verde-claro;
             }
-            p{
-                color: $verde-claro;
+            a{
+                color: $verde-claro !important;
+                margin-left: 5px;
+                transition: all 0.3s ease;
+                &:hover{
+                    transform: translate(10px);
+                }
             }
         }
     }
-}
+}   

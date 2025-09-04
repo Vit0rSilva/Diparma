@@ -1,0 +1,141 @@
+@charset "UTF-8";
+.primary-cor {
+  color: #042404;
+}
+
+.primary-apoio-cor {
+  color: #256020;
+}
+
+.secondary-cor {
+  color: #D39724;
+}
+
+.secondary-apoio-cor {
+  color: #E4B856;
+}
+
+.verde-claro-cor {
+  color: #EBFBEE;
+}
+
+html, body {
+  margin: 0px;
+  padding: 0px;
+  height: 100%;
+  background-color: #F8F9FA !important;
+  position: relative;
+}
+
+/*Button*/
+/*Fontes*/
+.playfair-display, h3, h2, h1 {
+  font-family: "Playfair Display", serif;
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-style: normal;
+}
+
+.lora, a, .legenda, p {
+  font-family: "Lora", serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/*Formatação de textos*/
+h1 {
+  color: #212529;
+  font-size: 40.5px;
+  margin-bottom: 0px !important;
+}
+
+h2 {
+  color: #343A40;
+  font-size: 27px;
+  margin-bottom: 0px !important;
+}
+
+h3 {
+  color: #343A40;
+  font-size: 22px !important;
+  margin-bottom: 0px !important;
+}
+
+p {
+  color: #495057;
+  font-size: 18px;
+  margin-bottom: 0px !important;
+}
+
+.legenda {
+  color: #495057;
+  font-size: 12px;
+  margin-bottom: 0px !important;
+}
+
+a {
+  color: #495057;
+  font-size: 18px;
+  margin-bottom: 0px !important;
+  text-decoration: none !important;
+}
+
+/*-----------------Carrinho-----------------*/
+.modal-carrinho {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: flex-end;
+  z-index: 998;
+}
+.modal-carrinho .modal-conteudo-carrinho {
+  position: fixed;
+  height: 100vh;
+  width: 600px;
+  background: #EFEFEF;
+  z-index: 999;
+  right: 0;
+  padding: 20px;
+}
+.modal-carrinho .modal-conteudo-carrinho i {
+  font-size: 30px;
+}
+.modal-carrinho .modal-conteudo-carrinho .box-pratos {
+  margin-top: 40px;
+}
+.modal-carrinho .modal-conteudo-carrinho .box-pratos .prato {
+  display: flex;
+  margin-bottom: 20px;
+}
+.modal-carrinho .modal-conteudo-carrinho .box-pratos .prato img {
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+}
+.modal-carrinho .modal-conteudo-carrinho .box-pratos .prato .info-prato {
+  margin-left: 10px;
+}
+.modal-carrinho .modal-conteudo-carrinho .box-pratos .prato .info-prato i {
+  font-size: 14px;
+}
+.modal-carrinho .modal-conteudo-carrinho .box-pratos .prato .info-prato .adcionais {
+  display: flex;
+  align-items: center;
+}
+.modal-carrinho .modal-conteudo-carrinho .box-pratos .prato .info-prato .adcionais .adcionais-p {
+  border-left: 2px solid #495057;
+  padding-left: 5px;
+}
+.modal-carrinho .modal-conteudo-carrinho .box-pratos .prato .preco {
+  margin-left: auto;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+}
+
+/*# sourceMappingURL=carrinho.css.map */

@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/footer.css">
     <title>Diparma</title>
 
+    <link rel="stylesheet" href="/css/carrinho.css">
 
     <!--Font Google-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -28,6 +29,80 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
 </head>
 <body>
+    <div class="modal-carrinho">
+        <div class="modal-conteudo-carrinho">
+            <div class="d-flex align-items-center mb-3">
+                <h1>Cesta</h1>
+                <i class="ph ph-tote ms-3"></i>
+            </div>
+            <div class="box-endereco">
+                <p>Endereço de entrega</p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <h2>Celecino brito N120</h2>
+                    <i class="ph ph-pencil"></i>
+                </div>
+                <p class="legenda">Lauro de Freitas|Centro|Bloco 12 lote B</p>
+                <div class="d-flex align-items-center mt-2">
+                    <i class="ph ph-motorcycle me-3"></i>
+                    <p>20m-30m</p>
+                </div>
+            </div>
+            <div class="box-pratos">
+                <div class="prato">
+                    <div class="img-prato">
+                        <img src="img/risoto.png" alt="">
+                    </div>
+                    <div class="info-prato">
+                        <p>Risoto de Camarão</p>
+                        <div class="d-flex align-items-center">
+                            <i class="ph ph-users-four me-1"></i>
+                            <p class="legenda">2 pessoas</p>
+                        </div>
+                        <div class="adcionais">
+                            <i class="ph ph-plus me-2"></i>
+                            <div class="adcionais-p">
+                                <p class="legenda">Camarões Salteados 100gr <span class="primary-apoio-cor">R$34,90</span></p>
+                                <p class="legenda">Camarões Salteados 100gr <span class="primary-apoio-cor">R$34,90</span></p>
+                                <p class="legenda">Camarões Salteados 100gr <span class="primary-apoio-cor">R$34,90</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="preco ">
+                        <h2>R$76.99</h2>
+                        <div class="d-flex mt-auto justify-content-between>
+                            <select name="" id="">
+                                <option value="1">1</option>
+                            </select>
+                            <button><i class="ph ph-trash"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="box-sub-total">
+                <hr>
+                <div class="d-flex justify-content-between">
+                    <p>Sub Total</p>
+                    <p>R$150.00</p>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <p>Frete</p>
+                    <p>R$8</p>
+                </div>
+                <div class="box-cupom">
+                    <p>Encontrar promoções</p>
+                    <button><i class="ph ph-ticket"></i><p>Adcionar cupom</p></button>
+                </div>
+            </div>
+            <div class="box-total">
+                <hr>
+                <div class="d-flex justify-content-between">
+                    <p>Total</p>
+                    <p>R$225</p>
+                </div>
+                <button class="button-finalizar"><p>Finalizar pedido</p><div class="button-ceta"><i class="ph ph-arrow-right"></i></div></button>
+            </div>
+        </div>
+    </div>
     <header class="cabecalho">
         <div class="navbar navbar-expand-sm">
             <div class="container-fluid d-flex justify-content-between">
