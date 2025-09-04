@@ -26,8 +26,34 @@ html, body {
   background-color: #F8F9FA !important;
   position: relative;
 }
+html.modal-aberto, body.modal-aberto {
+  overflow: hidden;
+}
 
 /*Button*/
+.modal-carrinho .modal-conteudo-carrinho .box-total button, .modal-carrinho .modal-conteudo-carrinho .box-sub-total .box-cupom button {
+  white-space: nowrap;
+  transition: background 0.3s ease;
+  background: #042404;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 50px;
+  display: flex;
+  justify-content: center;
+}
+.modal-carrinho .modal-conteudo-carrinho .box-total button p, .modal-carrinho .modal-conteudo-carrinho .box-sub-total .box-cupom button p {
+  color: #EBFBEE;
+}
+.modal-carrinho .modal-conteudo-carrinho .box-total button i, .modal-carrinho .modal-conteudo-carrinho .box-sub-total .box-cupom button i {
+  color: #EBFBEE;
+}
+.modal-carrinho .modal-conteudo-carrinho .box-total button:hover, .modal-carrinho .modal-conteudo-carrinho .box-sub-total .box-cupom button:hover {
+  background: #256020;
+}
+.modal-carrinho .modal-conteudo-carrinho .box-total button:active, .modal-carrinho .modal-conteudo-carrinho .box-sub-total .box-cupom button:active {
+  background: #021E05;
+}
+
 /*Fontes*/
 .playfair-display, h3, h2, h1 {
   font-family: "Playfair Display", serif;
@@ -101,12 +127,54 @@ a {
   z-index: 999;
   right: 0;
   padding: 20px;
+  transform: translateX(100%);
+  transition: transform 0.4s ease-in-out;
+  display: flex;
+  flex-direction: column;
+}
+.modal-carrinho .modal-conteudo-carrinho.ativo {
+  transform: translateX(0);
 }
 .modal-carrinho .modal-conteudo-carrinho i {
   font-size: 30px;
 }
 .modal-carrinho .modal-conteudo-carrinho .box-pratos {
   margin-top: 40px;
+  max-height: calc(100vh - 300px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+  transition: padding-right 0.3s ease;
+  /* Barra de rolagem personalizada */
+  /* Sombra dinâmica no fim da lista */
+}
+.modal-carrinho .modal-conteudo-carrinho .box-pratos.tem-scroll {
+  padding-right: 10px;
+}
+.modal-carrinho .modal-conteudo-carrinho .box-pratos::-webkit-scrollbar {
+  width: 8px;
+}
+.modal-carrinho .modal-conteudo-carrinho .box-pratos::-webkit-scrollbar-track {
+  background: transparent;
+}
+.modal-carrinho .modal-conteudo-carrinho .box-pratos::-webkit-scrollbar-thumb {
+  background-color: #042404;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+.modal-carrinho .modal-conteudo-carrinho .box-pratos::-webkit-scrollbar-thumb:hover {
+  background-color: #256020;
+}
+.modal-carrinho .modal-conteudo-carrinho .box-pratos::after {
+  content: "";
+  position: sticky; /* <-- Alterado de absolute para sticky */
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  background: linear-gradient(to top, #EFEFEF, transparent);
+  pointer-events: none;
+  display: block;
 }
 .modal-carrinho .modal-conteudo-carrinho .box-pratos .prato {
   display: flex;
@@ -119,6 +187,9 @@ a {
 }
 .modal-carrinho .modal-conteudo-carrinho .box-pratos .prato .info-prato {
   margin-left: 10px;
+}
+.modal-carrinho .modal-conteudo-carrinho .box-pratos .prato .info-prato p {
+  white-space: nowrap;
 }
 .modal-carrinho .modal-conteudo-carrinho .box-pratos .prato .info-prato i {
   font-size: 14px;
@@ -136,6 +207,67 @@ a {
   display: flex;
   align-items: flex-end;
   flex-direction: column;
+}
+.modal-carrinho .modal-conteudo-carrinho .box-pratos .prato .preco select {
+  width: 65px;
+  padding: 10px;
+  border: 2px solid #042404;
+  border-radius: 5px 0 0 5px;
+  background-color: transparent;
+  font-size: 16px;
+  color: #042404;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='%23042404' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  background-size: 16px;
+}
+.modal-carrinho .modal-conteudo-carrinho .box-pratos .prato .preco select:focus {
+  outline: none;
+  border-color: #021E05;
+  box-shadow: 0 0 5px rgba(1, 22, 4, 0.4784313725);
+}
+.modal-carrinho .modal-conteudo-carrinho .box-pratos .prato .preco button {
+  background: transparent;
+  border-radius: 0 5px 5px 0;
+  border: 2px solid #042404;
+}
+.modal-carrinho .modal-conteudo-carrinho .box-pratos .prato .preco button i {
+  color: #042404;
+}
+.modal-carrinho .modal-conteudo-carrinho .box-pratos .prato .preco button:hover {
+  transition: all 0.5s ease;
+  background: #256020;
+  border: 2px solid #256020;
+}
+.modal-carrinho .modal-conteudo-carrinho .box-pratos .prato .preco button:hover i {
+  color: #EBFBEE;
+}
+.modal-carrinho .modal-conteudo-carrinho .box-sub-total {
+  margin-top: auto;
+}
+.modal-carrinho .modal-conteudo-carrinho .box-sub-total .box-cupom {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #EBFBEE;
+  border: 2px solid #042404;
+  border-radius: 5px;
+  padding: 10px;
+}
+.modal-carrinho .modal-conteudo-carrinho .box-sub-total .box-cupom P {
+  margin-left: 20px;
+}
+.modal-carrinho .modal-conteudo-carrinho .box-total {
+  margin-top: 20px;
+}
+.modal-carrinho .modal-conteudo-carrinho .box-total .button-finalizar {
+  margin-top: 20px;
+  width: 100%;
 }
 
 /*# sourceMappingURL=carrinho.css.map */

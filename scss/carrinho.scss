@@ -55,6 +55,10 @@ html, body{
     height: 100%;
     background-color: $plano-de-fundo !important;
     position: relative;
+
+    &.modal-aberto{
+        overflow: hidden;
+    }
 }
 
 /*Button*/
@@ -66,7 +70,12 @@ html, body{
         border: none;
         border-radius: 5px;
         padding: 10px 50px;
+        display: flex;
+        justify-content: center;
         p{
+            color: $verde-claro;
+        }
+        i{
             color: $verde-claro;
         }
     
@@ -154,43 +163,184 @@ a{
         right: 0;
         padding: 20px;
 
+        transform: translateX(100%);
+        transition: transform 0.4s ease-in-out;
+
+        &.ativo {
+            transform: translateX(0);
+        }
+
         i{
             font-size: 30px;
         }
+        display: flex;
+        flex-direction: column;
 
+        
 
-        .box-pratos{
+        .box-pratos {
             margin-top: 40px;
-            .prato{
+            max-height: calc(100vh - 300px); // deixa espaço para o subtotal e o botão
+            overflow-y: auto;
+            overflow-x: hidden;
+            position: relative;
+
+            transition: padding-right 0.3s ease;
+
+            &.tem-scroll {
+                padding-right: 10px; // só aplica quando tem barra
+            }
+        
+            /* Barra de rolagem personalizada */
+            &::-webkit-scrollbar {
+                width: 8px;
+            }
+        
+            &::-webkit-scrollbar-track {
+                background: transparent;
+            }
+        
+            &::-webkit-scrollbar-thumb {
+                background-color: $primary;
+                border-radius: 4px;
+                transition: all 0.3s ease;
+            }
+        
+            &::-webkit-scrollbar-thumb:hover {
+                background-color: $primary-apoio;
+            }
+        
+            /* Sombra dinâmica no fim da lista */
+            &::after {
+                content: "";
+                position: sticky; /* <-- Alterado de absolute para sticky */
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 40px;
+                background: linear-gradient(
+                    to top,
+                    $plano-de-fundo-2,
+                    transparent
+                );
+                pointer-events: none; // não bloqueia clique
+                display: block;
+            }
+        
+            .prato {
                 display: flex;
                 margin-bottom: 20px;
-                img{
+        
+                img {
                     width: 100px;
                     height: 100px;
                     border-radius: 10px;
                 }
-                .info-prato{
+        
+                .info-prato {
                     margin-left: 10px;
-                    i{
+        
+                    p {
+                        white-space: nowrap;
+                    }
+        
+                    i {
                         font-size: 14px;
                     }
-                    .adcionais{
+        
+                    .adcionais {
                         display: flex;
                         align-items: center;
-                        .adcionais-p{
+        
+                        .adcionais-p {
                             border-left: 2px solid $legenda-cor;
                             padding-left: 5px;
                         }
                     }
                 }
-                .preco{
+        
+                .preco {
                     margin-left: auto;
                     display: flex;
                     align-items: flex-end;
                     flex-direction: column;
+        
+                    select {
+                        width: 65px;
+                        padding: 10px;
+                        border: 2px solid $primary;
+                        border-radius: 5px 0 0 5px;
+                        background-color: transparent;
+                        font-size: 16px;
+                        color: $primary;
+                        cursor: pointer;
+                        appearance: none;
+                        -webkit-appearance: none;
+                        -moz-appearance: none;
+        
+                        background-image: url("data:image/svg+xml;utf8,<svg fill='%23042404' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+                        background-repeat: no-repeat;
+                        background-position: right 8px center;
+                        background-size: 16px;
+        
+                        &:focus {
+                            outline: none;
+                            border-color: $primary-pressed;
+                            box-shadow: 0 0 5px #0116047a;
+                        }
+                    }
+        
+                    button {
+                        background: transparent;
+                        border-radius: 0 5px 5px 0;
+                        border: 2px solid $primary;
+        
+                        i {
+                            color: $primary;
+                        }
+        
+                        &:hover {
+                            transition: all 0.5s ease;
+                            background: $primary-apoio;
+                            border: 2px solid $primary-apoio;
+        
+                            i {
+                                color: $verde-claro;
+                            }
+                        }
+                    }
                 }
             }
+        }
+        
 
+        .box-sub-total{
+            margin-top: auto;
+
+            .box-cupom{
+                margin-top: 20px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                background: $verde-claro;
+                border: 2px solid $primary;
+                border-radius: 5px;
+                padding: 10px;
+                P{
+                    margin-left: 20px;
+                }
+
+                @extend %button-primary;
+            }
+        }
+        .box-total{
+            margin-top: 20px;
+            @extend %button-primary;
+
+            .button-finalizar{
+                margin-top: 20px;
+                width: 100%;
+            }
         }
     }
 }
