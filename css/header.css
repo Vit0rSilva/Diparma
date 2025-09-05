@@ -6,6 +6,21 @@
   font-style: normal;
 }
 
+.icone-nav button {
+  border: none;
+  background: none;
+  display: flex;
+  align-items: center;
+  transition: all 0.5s;
+}
+.icone-nav button i {
+  color: #042404;
+  font-size: 30px;
+}
+.icone-nav button:hover i {
+  color: #256020;
+}
+
 .img-nav {
   width: 80px;
 }
@@ -42,14 +57,9 @@
 }
 
 .icone-nav {
-  text-decoration: none;
-  font-size: 30px;
-  color: #042404;
-  transition: all 0.5s;
-  float: right;
-}
-.icone-nav:hover {
-  color: #256020;
+  width: 80px;
+  display: flex;
+  justify-content: flex-end;
 }
 
-/*# sourceMappingURL=footer.css.map */
+/*# sourceMappingURL=header.css.map */

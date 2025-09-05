@@ -36,6 +36,25 @@ $sublegenda-tamanho: 8px;
     font-style: normal;
 }
 
+%button-icone{
+  button{
+    border: none;
+    background: none;
+    display: flex;
+    align-items: center;
+    i{
+      color: $primary;
+      font-size: 30px;
+    }
+    transition: all 0.5s;
+    &:hover{
+      i{
+        color: $primary-apoio;
+      }
+    }
+  }
+}
+
 //--------Nav---------
   .img-nav{
       width: 80px;
@@ -77,12 +96,8 @@ $sublegenda-tamanho: 8px;
   }
   
     .icone-nav{
-        text-decoration: none;
-        font-size: 30px;
-        color: $primary;
-        transition: all 0.5s;
-        float: right;
-        &:hover{
-            color: $primary-apoio;
-        }
+        width: 80px;
+        display: flex;
+        justify-content: flex-end;
+        @extend %button-icone;
     }
