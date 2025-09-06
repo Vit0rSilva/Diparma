@@ -19,6 +19,10 @@
   color: #EBFBEE;
 }
 
+.alerta-cor {
+  color: #BC9101;
+}
+
 html, body {
   margin: 0px;
   padding: 0px;
@@ -316,29 +320,61 @@ a {
 }
 .modal-carrinho .modal-conteudo-carrinho .box-sub-total .radio-btn p {
   display: inline-block;
-  padding: 10px 20px;
-  border: 2px solid #4caf50;
-  border-radius: 6px;
-  background-color: #fff;
-  color: #4caf50;
+  padding: 5px 15px;
+  border: 2px solid #042404;
+  border-radius: 5px;
+  background-color: transparent;
+  color: #042404;
   font-weight: 600;
   font-size: 16px;
   transition: all 0.3s ease;
   display: flex;
   align-items: center;
 }
+.modal-carrinho .modal-conteudo-carrinho .box-sub-total .radio-btn p i {
+  margin-left: 10px;
+}
 .modal-carrinho .modal-conteudo-carrinho .box-sub-total .radio-btn input:checked + p {
-  background-color: #4caf50;
+  background-color: #042404;
   color: white;
-  box-shadow: 0 4px 10px rgba(76, 175, 80, 0.4);
   transform: scale(1.05);
 }
 .modal-carrinho .modal-conteudo-carrinho .box-sub-total .radio-btn:hover p {
-  border-color: #3e8e41;
+  background-color: rgba(4, 36, 4, 0.1);
+  border-color: #042404;
 }
 .modal-carrinho .modal-conteudo-carrinho .box-sub-total .radio-btn input:disabled + p {
   opacity: 0.5;
   cursor: not-allowed;
+}
+.modal-carrinho .modal-conteudo-carrinho .box-sub-total .forma-pagamento {
+  margin-top: 10px;
+}
+.modal-carrinho .modal-conteudo-carrinho .box-sub-total .forma-pagamento input[type=radio] {
+  appearance: none; /* remove estilo padrão */
+  -webkit-appearance: none; /* compatibilidade */
+  -moz-appearance: none;
+  width: 15px;
+  height: 15px;
+  border: 2px solid #042404;
+  border-radius: 50%; /* deixa redondo */
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+}
+.modal-carrinho .modal-conteudo-carrinho .box-sub-total .forma-pagamento input[type=radio]:checked {
+  background-color: #042404;
+  border-color: #042404;
+}
+.modal-carrinho .modal-conteudo-carrinho .box-sub-total .forma-pagamento label {
+  margin-left: 10px;
+}
+.modal-carrinho .modal-conteudo-carrinho .box-sub-total .forma-pagamento input {
+  width: 100%;
+  background: none;
+  border: 2px solid #042404;
+  border-radius: 5px;
+  padding: 5px;
 }
 .modal-carrinho .modal-conteudo-carrinho .box-total {
   margin-top: 20px;

@@ -39,6 +39,9 @@ $desligado: #EBEBEB;
 .verde-claro-cor{
     color: $verde-claro;
 }
+.alerta-cor{
+    color: $alerta;
+}
 //Tamanhos textos
 
 $titulo-tamanho: 40.5px;
@@ -401,35 +404,73 @@ a{
             /* Estiliza o botão */
             .radio-btn p {
                 display: inline-block;
-                padding: 10px 20px;
-                border: 2px solid #4caf50;
-                border-radius: 6px;
-                background-color: #fff;
-                color: #4caf50;
+                padding: 5px 15px;
+                border: 2px solid $primary;
+                border-radius: 5px;
+                background-color: transparent;
+                color: $primary;
                 font-weight: 600;
                 font-size: 16px;
                 transition: all 0.3s ease;
                 display: flex;
                 align-items: center;
+                i{
+                    margin-left: 10px;
+                }
             }
             
             /* Quando o botão estiver selecionado */
             .radio-btn input:checked + p {
-                background-color: #4caf50;
+                background-color: $primary;
                 color: white;
-                box-shadow: 0 4px 10px rgba(76, 175, 80, 0.4);
                 transform: scale(1.05);
             }
             
             /* Efeito hover */
             .radio-btn:hover p {
-                border-color: #3e8e41;
+                background-color: rgba($primary, 0.1);
+                border-color: $primary;
             }
             
             /* Deixa o botão desabilitado */
             .radio-btn input:disabled + p {
                 opacity: 0.5;
                 cursor: not-allowed;
+            }
+
+            .forma-pagamento{
+                margin-top: 10px;
+                input[type="radio"] {
+                appearance: none;         /* remove estilo padrão */
+                -webkit-appearance: none; /* compatibilidade */
+                -moz-appearance: none;
+
+                width: 15px;
+                height: 15px;
+                border: 2px solid $primary;
+                border-radius: 50%;       /* deixa redondo */
+                cursor: pointer;
+                display: inline-block;
+                position: relative;
+                }
+
+                input[type="radio"]:checked {
+                background-color: $primary;
+                border-color: $primary;
+                }
+
+                label{
+                    margin-left: 10px;
+                }
+
+                input{
+                    width: 100%;
+                    background: none;
+                    border: 2px solid $primary;
+                    border-radius: 5px;
+                    padding: 5px;
+                }
+
             }
             
         }
