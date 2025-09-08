@@ -76,6 +76,35 @@ html.modal-aberto, body.modal-aberto {
   color: #021E05;
 }
 
+.modal-carrinho .modal-conteudo-carrinho .box-total .button-border {
+  white-space: nowrap;
+  transition: background 0.3s ease;
+  background: none;
+  border: 2px solid #042404;
+  border-radius: 5px;
+  padding: 10px 50px;
+  display: flex;
+  justify-content: center;
+}
+.modal-carrinho .modal-conteudo-carrinho .box-total .button-border p {
+  color: #042404;
+}
+.modal-carrinho .modal-conteudo-carrinho .box-total .button-border i {
+  color: #042404;
+}
+.modal-carrinho .modal-conteudo-carrinho .box-total .button-border:hover {
+  background: rgba(4, 36, 4, 0.1);
+}
+.modal-carrinho .modal-conteudo-carrinho .box-total .button-border:active {
+  background: #021E05;
+}
+.modal-carrinho .modal-conteudo-carrinho .box-total .button-border:active p {
+  color: #EBFBEE;
+}
+.modal-carrinho .modal-conteudo-carrinho .box-total .button-border:active i {
+  color: #EBFBEE;
+}
+
 /*Fontes*/
 .playfair-display, h3, h2, h1 {
   font-family: "Playfair Display", serif;
@@ -284,6 +313,7 @@ a {
   color: #EBFBEE;
 }
 .modal-carrinho .modal-conteudo-carrinho .box-sub-total {
+  min-height: 159px;
   margin-top: auto;
   /* Container do botão */
   /* Esconde o radio original */
@@ -379,9 +409,15 @@ a {
 .modal-carrinho .modal-conteudo-carrinho .box-total {
   margin-top: 20px;
 }
-.modal-carrinho .modal-conteudo-carrinho .box-total .button-finalizar {
+.modal-carrinho .modal-conteudo-carrinho .box-total .button-total button {
   margin-top: 20px;
+}
+.modal-carrinho .modal-conteudo-carrinho .box-total .button-total .button-proximo {
   width: 100%;
+}
+.modal-carrinho .modal-conteudo-carrinho .box-total .button-metade {
+  display: flex;
+  justify-content: space-between;
 }
 
 /*# sourceMappingURL=carrinho.css.map */

@@ -115,6 +115,37 @@ html, body{
     }
   }
 
+  %button-primary-border{
+    .button-border{
+        white-space: nowrap;
+        transition: background 0.3s ease;
+        background: none;
+        border: 2px solid $primary;
+        border-radius: 5px;
+        padding: 10px 50px;
+        display: flex;
+        justify-content: center;
+        p{
+            color: $primary;
+        }
+        i{
+            color: $primary;
+        }
+    
+        &:hover{
+            background: rgba($primary, 0.1);
+        }
+        &:active{
+            background: $primary-pressed;
+            p{
+                color: $verde-claro;
+            }
+            i{
+                color: $verde-claro;
+            }
+        }
+    }
+}
 
 /*Fontes*/
 .playfair-display{
@@ -365,6 +396,7 @@ a{
         
 
         .box-sub-total{
+            min-height: 159px;
             margin-top: auto;
 
             .box-cupom{
@@ -477,10 +509,19 @@ a{
         .box-total{
             margin-top: 20px;
             @extend %button-primary;
-
-            .button-finalizar{
-                margin-top: 20px;
-                width: 100%;
+            @extend %button-primary-border;
+            .button-total{
+                
+                button{
+                    margin-top: 20px;
+                }
+                .button-proximo{
+                    width: 100%;
+                }
+            }
+            .button-metade{
+                display: flex;
+                justify-content: space-between;
             }
         }
     }
