@@ -253,10 +253,24 @@ a{
                 align-items: center;
             }
         }
+        
+        .box-finalizado{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100dvh;
+            .centro {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                text-align: center;      
+              }
+        }
 
         .box-pratos {
             margin-top: 40px;
-            max-height: calc(100vh - 300px); // deixa espaço para o subtotal e o botão
+            max-height: calc(100vh - 300px);
             overflow-y: auto;
             overflow-x: hidden;
             position: relative;
@@ -515,13 +529,15 @@ a{
                 button{
                     margin-top: 20px;
                 }
-                .button-proximo{
-                    width: 100%;
+                &.button-expandido{
+                    button{
+                        width: 100%;
+                    }
                 }
-            }
-            .button-metade{
-                display: flex;
-                justify-content: space-between;
+                &.button-metade{
+                    display: flex;
+                    justify-content: space-between;
+                }
             }
         }
     }

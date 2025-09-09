@@ -200,6 +200,19 @@ a {
   display: flex;
   align-items: center;
 }
+.modal-carrinho .modal-conteudo-carrinho .box-finalizado {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100dvh;
+}
+.modal-carrinho .modal-conteudo-carrinho .box-finalizado .centro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
 .modal-carrinho .modal-conteudo-carrinho .box-pratos {
   margin-top: 40px;
   max-height: calc(100vh - 300px);
@@ -412,10 +425,10 @@ a {
 .modal-carrinho .modal-conteudo-carrinho .box-total .button-total button {
   margin-top: 20px;
 }
-.modal-carrinho .modal-conteudo-carrinho .box-total .button-total .button-proximo {
+.modal-carrinho .modal-conteudo-carrinho .box-total .button-total.button-expandido button {
   width: 100%;
 }
-.modal-carrinho .modal-conteudo-carrinho .box-total .button-metade {
+.modal-carrinho .modal-conteudo-carrinho .box-total .button-total.button-metade {
   display: flex;
   justify-content: space-between;
 }

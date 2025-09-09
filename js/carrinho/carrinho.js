@@ -43,6 +43,7 @@ function fecharModal() {
 //Passando carrinho
 
 function paginaCarrinho($numero){
+    const boxModal = document.querySelector('.modal-conteudo-carrinho');
     const previsao = document.querySelector('.box-endereco .previsao');
     const previsaoEditar = document.querySelector('.box-endereco .previsao-editar');
     const boxPratos = document.querySelector('.box-pratos');
@@ -132,11 +133,9 @@ function paginaCarrinho($numero){
             <button><i class="ph ph-ticket"></i><p>Adcionar cupom</p></button>
         </div>`;
         
-    
+        buttonTotal.classList.add('button-expandido')
         buttonTotal.innerHTML = `
-        <div class="button-total">
             <button class="button-proximo" onclick="paginaCarrinho(2)"><p>Finalizar pedido</p><i class="ph ph-arrow-right ms-2"></i></div></button>
-        </div>
         `;
     }else if($numero == 2){
         //Box endereço
@@ -193,11 +192,29 @@ function paginaCarrinho($numero){
                     </div>`;
         
     
+        buttonTotal.classList.add('button-metade');
+        buttonTotal.classList.remove('button-expandido');
         buttonTotal.innerHTML = `
-            <div class="button-metade">
-                <button class="button-border" onclick="paginaCarrinho(1)"><p>Voltar</p><i class="ph ph-arrow-left ms-2"></i></div></button>
-                <button class="" onclick="paginaCarrinho(3)"><p>Finalizar pedido</p><i class="ph ph-arrow-right ms-2"></i></div></button>
+            <button class="button-border" onclick="paginaCarrinho(1)"><p>Voltar</p><i class="ph ph-arrow-left ms-2"></i></div></button>
+            <button class="" onclick="paginaCarrinho(3)"><p>Finalizar pedido</p><i class="ph ph-arrow-right ms-2"></i></div></button>
+        `;
+    }else if(3){
+        boxModal.innerHTML = `
+        <div class="d-flex align-items-center mb-3">
+            <h1>Cesta</h1>
+            <i class="ph ph-tote ms-3"></i>
+        </div>
+        <div class="box-finalizado">
+            <div class="centro">
+                <h2>Pedido feito som sucesso</h2>
+                <dotlottie-wc
+                src="https://lottie.host/87d66e57-b196-4b6c-815c-3ead1bb282f8/QyzVWlvBx7.lottie"
+                style="width: 300px;height: 300px"
+                speed="1"
+                autoplay
+                ></dotlottie-wc>
             </div>
+        </div>
         `;
     }
 
