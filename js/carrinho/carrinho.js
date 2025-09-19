@@ -239,7 +239,7 @@ function formaPagamento(){
                     <input type="radio" name="cartao-forma" value="vale" id="vale">
                     <label for="vale">Vale-Alimentação</label>
                 </div>
-            `;
+            `;                                                           
         }
         else if(formaPagamento === 'dinheiro'){
             boxFormaPagamento.innerHTML = `

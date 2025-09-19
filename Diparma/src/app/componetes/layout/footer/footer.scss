@@ -1,0 +1,35 @@
+/*-----------------Footer-----------------*/
+@import '../../../../styles.scss';
+
+footer{
+    margin-top: 60px;
+    background: $primary;
+    padding: 20px 0;
+    .img-logo{
+        img{
+            width: 300px;
+            height: 300px;
+        }
+    }
+    .box-links{
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        padding: 40px 20px 0 20px;
+        .box-link{
+            display: flex;
+            flex-direction: column;
+            h2{
+                color: $verde-claro;
+            }
+            a{
+                color: $verde-claro !important;
+                margin-left: 5px;
+                transition: all 0.3s ease;
+                &:hover{
+                    transform: translate(10px);
+                }
+            }
+        }
+    }
+}   
