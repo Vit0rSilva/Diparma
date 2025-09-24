@@ -2,7 +2,6 @@ import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Footer } from './componetes/layout/footer/footer';
 import { Header } from './componetes/layout/header/header';
-import { Carrinho } from './componetes/layout/carrinho/carrinho';
 import { Principal } from './componetes/paginas/principal/principal';
 
 

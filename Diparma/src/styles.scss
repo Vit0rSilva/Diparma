@@ -19,6 +19,7 @@ $texto-corrido-cor: #495057;
 $legenda-cor: #495057;
 //Cor Plano de fundo
 $plano-de-fundo: #F8F9FA;
+$plano-de-fundo-2: #EFEFEF;
 $verde-claro: #EBFBEE;
 $amarelo-claro: #FDF7F1;
 $desligado: #EBEBEB;
@@ -78,6 +79,61 @@ html, body{
     }
 }
 
+%button-icone{
+    button{
+        border: none;
+        background: none;
+        display: flex;
+        align-items: center;
+        i{
+            color: $primary;
+            font-size: 30px;
+        }
+        transition: all 0.5s;
+        &:hover{
+            i{
+            color: $primary-apoio;
+            }
+        }
+        &:active{
+            i{
+                color: $primary-pressed;
+            }
+        }
+    }
+  }
+
+  %button-primary-border{
+    .button-border{
+        white-space: nowrap;
+        transition: background 0.3s ease;
+        background: none;
+        border: 2px solid $primary;
+        border-radius: 5px;
+        padding: 10px 50px;
+        display: flex;
+        justify-content: center;
+        p{
+            color: $primary;
+        }
+        i{
+            color: $primary;
+        }
+    
+        &:hover{
+            background: rgba($primary, 0.1);
+        }
+        &:active{
+            background: $primary-pressed;
+            p{
+                color: $verde-claro;
+            }
+            i{
+                color: $verde-claro;
+            }
+        }
+    }
+}
 
 /*Fontes*/
 .playfair-display{

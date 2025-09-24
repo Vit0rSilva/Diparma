@@ -1,0 +1,342 @@
+@use '../../../styles.scss' as *;
+/*-----------------Carrinho-----------------*/
+.modal-carrinho{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: flex-end;
+    z-index: 998;
+
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+
+    &.ativo-carrinho {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .modal-conteudo-carrinho{
+        position: fixed;
+        height: 100vh;
+        width: 600px;
+        background: $plano-de-fundo-2;
+        z-index: 999;
+        right: 0;
+        padding: 20px;
+
+        transform: translateX(100%);
+        transition: transform 0.4s ease-in-out;
+
+        &.ativo-carrinho {
+            transform: translateX(0);
+        }
+
+        i{
+            font-size: 30px;
+        }
+        display: flex;
+        flex-direction: column;
+
+        .box-endereco{
+
+            @extend %button-icone;
+
+            .previsao-editar{
+                display: flex;
+                align-items: center;
+            }
+        }
+        
+        .box-finalizado{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100dvh;
+            .centro {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                text-align: center;      
+              }
+        }
+
+        .box-pratos {
+            margin-top: 40px;
+            max-height: calc(100vh - 300px);
+            overflow-y: auto;
+            overflow-x: hidden;
+            position: relative;
+
+            transition: padding-right 0.3s ease;
+
+            &.tem-scroll {
+                padding-right: 10px; // só aplica quando tem barra
+            }
+        
+            /* Barra de rolagem personalizada */
+            &::-webkit-scrollbar {
+                width: 8px;
+            }
+        
+            &::-webkit-scrollbar-track {
+                background: transparent;
+            }
+        
+            &::-webkit-scrollbar-thumb {
+                background-color: $primary;
+                border-radius: 4px;
+                transition: all 0.3s ease;
+            }
+        
+            &::-webkit-scrollbar-thumb:hover {
+                background-color: $primary-apoio;
+            }
+        
+            /* Sombra dinâmica no fim da lista */
+            &::after {
+                content: "";
+                position: sticky; /* <-- Alterado de absolute para sticky */
+                bottom: 0;
+                left: 0;
+                width: 100%;
+                height: 40px;
+                background: linear-gradient(
+                    to top,
+                    $plano-de-fundo-2,
+                    transparent
+                );
+                pointer-events: none; // não bloqueia clique
+                display: block;
+            }
+
+            .prato-minimizado{
+                display: flex;
+                justify-content: space-between;
+            }
+        
+            .prato {
+                display: flex;
+                margin-bottom: 20px;
+        
+                img {
+                    width: 100px;
+                    height: 100px;
+                    border-radius: 10px;
+                }
+        
+                .info-prato {
+                    margin-left: 10px;
+        
+                    p {
+                        white-space: nowrap;
+                    }
+        
+                    i {
+                        font-size: 14px;
+                    }
+        
+                    .adcionais {
+                        display: flex;
+                        align-items: center;
+        
+                        .adcionais-p {
+                            border-left: 2px solid $legenda-cor;
+                            padding-left: 5px;
+                        }
+                    }
+                }
+        
+                .preco {
+                    margin-left: auto;
+                    display: flex;
+                    align-items: flex-end;
+                    flex-direction: column;
+        
+                    select {
+                        width: 65px;
+                        padding: 10px;
+                        border: 2px solid $primary;
+                        border-radius: 5px 0 0 5px;
+                        background-color: transparent;
+                        font-size: 16px;
+                        color: $primary;
+                        cursor: pointer;
+                        appearance: none;
+                        -webkit-appearance: none;
+                        -moz-appearance: none;
+        
+                        background-image: url("data:image/svg+xml;utf8,<svg fill='%23042404' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/></svg>");
+                        background-repeat: no-repeat;
+                        background-position: right 8px center;
+                        background-size: 16px;
+        
+                        &:focus {
+                            outline: none;
+                            border-color: $primary-pressed;
+                            box-shadow: 0 0 5px #0116047a;
+                        }
+                    }
+        
+                    button {
+                        background: transparent;
+                        border-radius: 0 5px 5px 0;
+                        border: 2px solid $primary;
+        
+                        i {
+                            color: $primary;
+                        }
+        
+                        &:hover {
+                            transition: all 0.5s ease;
+                            background: $primary-apoio;
+                            border: 2px solid $primary-apoio;
+        
+                            i {
+                                color: $verde-claro;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+
+        .box-sub-total{
+            min-height: 159px;
+            margin-top: auto;
+
+            .box-cupom{
+                margin-top: 20px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                background: $verde-claro;
+                border: 2px solid $primary;
+                border-radius: 5px;
+                padding: 10px;
+                P{
+                    margin-left: 20px;
+                }
+
+                @extend %button-primary;
+            }
+
+            .radio-buttons {
+                display: flex;
+                gap: 10px;
+                flex-wrap: wrap;
+            }
+            
+            /* Container do botão */
+            .radio-btn {
+                position: relative;
+                display: inline-block;
+                cursor: pointer;
+            }
+            
+            /* Esconde o radio original */
+            .radio-btn input {
+                display: none;
+            }
+            
+            /* Estiliza o botão */
+            .radio-btn p {
+                display: inline-block;
+                padding: 5px 15px;
+                border: 2px solid $primary;
+                border-radius: 5px;
+                background-color: transparent;
+                color: $primary;
+                font-weight: 600;
+                font-size: 16px;
+                transition: all 0.3s ease;
+                display: flex;
+                align-items: center;
+                i{
+                    margin-left: 10px;
+                }
+            }
+            
+            /* Quando o botão estiver selecionado */
+            .radio-btn input:checked + p {
+                background-color: $primary;
+                color: white;
+                transform: scale(1.05);
+            }
+            
+            /* Efeito hover */
+            .radio-btn:hover p {
+                background-color: rgba($primary, 0.1);
+                border-color: $primary;
+            }
+            
+            /* Deixa o botão desabilitado */
+            .radio-btn input:disabled + p {
+                opacity: 0.5;
+                cursor: not-allowed;
+            }
+
+            .forma-pagamento{
+                margin-top: 10px;
+                input[type="radio"] {
+                appearance: none;         /* remove estilo padrão */
+                -webkit-appearance: none; /* compatibilidade */
+                -moz-appearance: none;
+
+                width: 15px;
+                height: 15px;
+                border: 2px solid $primary;
+                border-radius: 50%;       /* deixa redondo */
+                cursor: pointer;
+                display: inline-block;
+                position: relative;
+                }
+
+                input[type="radio"]:checked {
+                background-color: $primary;
+                border-color: $primary;
+                }
+
+                label{
+                    margin-left: 10px;
+                }
+
+                input{
+                    width: 100%;
+                    background: none;
+                    border: 2px solid $primary;
+                    border-radius: 5px;
+                    padding: 5px;
+                }
+
+            }
+            
+        }
+        .box-total{
+            margin-top: 20px;
+            @extend %button-primary;
+            @extend %button-primary-border;
+            .button-total{
+                
+                button{
+                    margin-top: 20px;
+                }
+                &.button-expandido{
+                    button{
+                        width: 100%;
+                    }
+                }
+                &.button-metade{
+                    display: flex;
+                    justify-content: space-between;
+                }
+            }
+        }
+    }
+}

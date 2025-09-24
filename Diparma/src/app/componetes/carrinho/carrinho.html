@@ -1,5 +1,5 @@
-<div class="modal-carrinho">
-    <div class="modal-conteudo-carrinho">
+<div class="modal-carrinho" [class.ativo-carrinho]="carrinhoAberto" (click)="fecharCarrinho()">
+    <div class="modal-conteudo-carrinho" [class.ativo-carrinho]="carrinhoAberto">
         <div class="d-flex align-items-center mb-3">
             <h1>Cesta</h1>
             <i class="ph ph-tote ms-3"></i>
@@ -110,7 +110,7 @@
                 <p>R$225</p>
             </div>
             <div class="button-total button-expandido">
-                <button class="button-proximo" onclick="paginaCarrinho(2)"><p>Finalizar pedido</p><i class="ph ph-arrow-right ms-2"></i></button>
+                <button class="button-proximo"><p>Finalizar pedido</p><i class="ph ph-arrow-right ms-2"></i></button>
             </div>
         </div>
     </div>

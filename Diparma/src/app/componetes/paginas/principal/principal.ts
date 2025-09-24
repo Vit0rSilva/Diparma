@@ -2,6 +2,7 @@ import { Component, AfterViewInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Footer } from '../../layout/footer/footer';
 import { Header } from '../../layout/header/header';
+import { Carrinho } from '../../carrinho/carrinho';
 
 import Swiper from 'swiper';
 import 'swiper/css';
@@ -9,7 +10,7 @@ import 'swiper/css';
 @Component({
   selector: 'app-principal',
   standalone: true,
-  imports: [Footer, Header,CommonModule],
+  imports: [Footer, Header,CommonModule,Carrinho],
   templateUrl: './principal.html',
   styleUrls: ['./principal.scss']
 })
