@@ -10,12 +10,12 @@
                 <button class="button-cardapio d-flex jus"><p>Ver menu</p><div class="button-ceta"><i class="ph ph-arrow-right"></i></div></button>
                 <div class="swiper swiper-carrosel">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide" *ngIf="numeros == 1">
+                        <div class="swiper-slide" *ngFor="let prato of pratos">
                             <div class="box-descontos">
-                                <img src="img/risoto-camarao.png" alt="">
+                                <img src="img/pratos/{{prato.img}}" alt="">
                                 <div class="desconto">
-                                    <p>Risoto de camarão</p>
-                                    <h2>R$50.00 por R$39.99</h2>
+                                    <p>{{prato.nome}}</p>
+                                    <h2>R${{prato.preco}} por R${{prato.precoDesconto}}</h2>
                                 </div>
                             </div>
                         </div>
@@ -31,7 +31,6 @@
                 </div>
             </div>
             <div class="col-4">
-
             </div>
         </div>
     </section>
@@ -61,292 +60,22 @@
         <div class="col-12">
             <div class="swiper swiper-carrosel-pratos">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide">
+                    <div class="swiper-slide" *ngFor="let prato of pratos">
                         <div class="bow-img">
-                            <img src="img/risoto.png" alt="">
+                            <img src="img/pratos/{{prato.img}}" alt="">
                             <div class="preco">
-                                <h2>R$45.90</h2>
+                                <h2>R${{prato.preco}}</h2>
                             </div>
                         </div>
-                        <h3>Risoto de frango</h3>
-                        <p>O melhor Risoto de camarão gostoso da bahia americana lala dajde</p>
+                        <h3>{{prato.nome}}</h3>
+                        <p>{{prato.legenda}}</p>
                         <div class="d-flex align-items-center">
                             <i class="ph ph-users primary-apoio-cor me-1"></i>
-                            <p class="primary-apoio-cor">2 pessoas</p>
+                            <p class="primary-apoio-cor">{{prato.pessoas}} pessoas</p>
                         </div>
                         <div class="d-flex">
                             <i class="ph ph-star primary-apoio-cor me-1"></i>
-                            <p class="primary-apoio-cor">6.8</p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="bow-img">
-                            <img src="img/risoto.png" alt="">
-                            <div class="preco">
-                                <h2>R$45.90</h2>
-                            </div>
-                        </div>
-                        <h3>Risoto de frango</h3>
-                        <p>O melhor Risoto de camarão gostoso da bahia americana lala dajde</p>
-                        <div class="d-flex align-items-center">
-                            <i class="ph ph-users primary-apoio-cor me-1"></i>
-                            <p class="primary-apoio-cor">2 pessoas</p>
-                        </div>
-                        <div class="d-flex">
-                            <i class="ph ph-star primary-apoio-cor me-1"></i>
-                            <p class="primary-apoio-cor">6.8</p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="bow-img">
-                            <img src="img/risoto.png" alt="">
-                            <div class="preco">
-                                <h2>R$45.90</h2>
-                            </div>
-                        </div>
-                        <h3>Risoto de frango</h3>
-                        <p>O melhor Risoto de camarão gostoso da bahia americana lala dajde</p>
-                        <div class="d-flex align-items-center">
-                            <i class="ph ph-users primary-apoio-cor me-1"></i>
-                            <p class="primary-apoio-cor">2 pessoas</p>
-                        </div>
-                        <div class="d-flex">
-                            <i class="ph ph-star primary-apoio-cor me-1"></i>
-                            <p class="primary-apoio-cor">6.8</p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="bow-img">
-                            <img src="img/risoto.png" alt="">
-                            <div class="preco">
-                                <h2>R$45.90</h2>
-                            </div>
-                        </div>
-                        <h3>Risoto de frango</h3>
-                        <p>O melhor Risoto de camarão gostoso da bahia americana lala dajde</p>
-                        <div class="d-flex align-items-center">
-                            <i class="ph ph-users primary-apoio-cor me-1"></i>
-                            <p class="primary-apoio-cor">2 pessoas</p>
-                        </div>
-                        <div class="d-flex">
-                            <i class="ph ph-star primary-apoio-cor me-1"></i>
-                            <p class="primary-apoio-cor">6.8</p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="bow-img">
-                            <img src="img/risoto.png" alt="">
-                            <div class="preco">
-                                <h2>R$45.90</h2>
-                            </div>
-                        </div>
-                        <h3>Risoto de frango</h3>
-                        <p>O melhor Risoto de camarão gostoso da bahia americana lala dajde</p>
-                        <div class="d-flex align-items-center">
-                            <i class="ph ph-users primary-apoio-cor me-1"></i>
-                            <p class="primary-apoio-cor">2 pessoas</p>
-                        </div>
-                        <div class="d-flex">
-                            <i class="ph ph-star primary-apoio-cor me-1"></i>
-                            <p class="primary-apoio-cor">6.8</p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="bow-img">
-                            <img src="img/risoto.png" alt="">
-                            <div class="preco">
-                                <h2>R$45.90</h2>
-                            </div>
-                        </div>
-                        <h3>Risoto de frango</h3>
-                        <p>O melhor Risoto de camarão gostoso da bahia americana lala dajde</p>
-                        <div class="d-flex align-items-center">
-                            <i class="ph ph-users primary-apoio-cor me-1"></i>
-                            <p class="primary-apoio-cor">2 pessoas</p>
-                        </div>
-                        <div class="d-flex">
-                            <i class="ph ph-star primary-apoio-cor me-1"></i>
-                            <p class="primary-apoio-cor">6.8</p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="bow-img">
-                            <img src="img/risoto.png" alt="">
-                            <div class="preco">
-                                <h2>R$45.90</h2>
-                            </div>
-                        </div>
-                        <h3>Risoto de frango</h3>
-                        <p>O melhor Risoto de camarão gostoso da bahia americana lala dajde</p>
-                        <div class="d-flex align-items-center">
-                            <i class="ph ph-users primary-apoio-cor me-1"></i>
-                            <p class="primary-apoio-cor">2 pessoas</p>
-                        </div>
-                        <div class="d-flex">
-                            <i class="ph ph-star primary-apoio-cor me-1"></i>
-                            <p class="primary-apoio-cor">6.8</p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="bow-img">
-                            <img src="img/risoto.png" alt="">
-                            <div class="preco">
-                                <h2>R$45.90</h2>
-                            </div>
-                        </div>
-                        <h3>Risoto de frango</h3>
-                        <p>O melhor Risoto de camarão gostoso da bahia americana lala dajde</p>
-                        <div class="d-flex align-items-center">
-                            <i class="ph ph-users primary-apoio-cor me-1"></i>
-                            <p class="primary-apoio-cor">2 pessoas</p>
-                        </div>
-                        <div class="d-flex">
-                            <i class="ph ph-star primary-apoio-cor me-1"></i>
-                            <p class="primary-apoio-cor">6.8</p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="bow-img">
-                            <img src="img/risoto.png" alt="">
-                            <div class="preco">
-                                <h2>R$45.90</h2>
-                            </div>
-                        </div>
-                        <h3>Risoto de frango</h3>
-                        <p>O melhor Risoto de camarão gostoso da bahia americana lala dajde</p>
-                        <div class="d-flex align-items-center">
-                            <i class="ph ph-users primary-apoio-cor me-1"></i>
-                            <p class="primary-apoio-cor">2 pessoas</p>
-                        </div>
-                        <div class="d-flex">
-                            <i class="ph ph-star primary-apoio-cor me-1"></i>
-                            <p class="primary-apoio-cor">6.8</p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="bow-img">
-                            <img src="img/risoto.png" alt="">
-                            <div class="preco">
-                                <h2>R$45.90</h2>
-                            </div>
-                        </div>
-                        <h3>Risoto de frango</h3>
-                        <p>O melhor Risoto de camarão gostoso da bahia americana lala dajde</p>
-                        <div class="d-flex align-items-center">
-                            <i class="ph ph-users primary-apoio-cor me-1"></i>
-                            <p class="primary-apoio-cor">2 pessoas</p>
-                        </div>
-                        <div class="d-flex">
-                            <i class="ph ph-star primary-apoio-cor me-1"></i>
-                            <p class="primary-apoio-cor">6.8</p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="bow-img">
-                            <img src="img/risoto.png" alt="">
-                            <div class="preco">
-                                <h2>R$45.90</h2>
-                            </div>
-                        </div>
-                        <h3>Risoto de frango</h3>
-                        <p>O melhor Risoto de camarão gostoso da bahia americana lala dajde</p>
-                        <div class="d-flex align-items-center">
-                            <i class="ph ph-users primary-apoio-cor me-1"></i>
-                            <p class="primary-apoio-cor">2 pessoas</p>
-                        </div>
-                        <div class="d-flex">
-                            <i class="ph ph-star primary-apoio-cor me-1"></i>
-                            <p class="primary-apoio-cor">6.8</p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="bow-img">
-                            <img src="img/risoto.png" alt="">
-                            <div class="preco">
-                                <h2>R$45.90</h2>
-                            </div>
-                        </div>
-                        <h3>Risoto de frango</h3>
-                        <p>O melhor Risoto de camarão gostoso da bahia americana lala dajde</p>
-                        <div class="d-flex align-items-center">
-                            <i class="ph ph-users primary-apoio-cor me-1"></i>
-                            <p class="primary-apoio-cor">2 pessoas</p>
-                        </div>
-                        <div class="d-flex">
-                            <i class="ph ph-star primary-apoio-cor me-1"></i>
-                            <p class="primary-apoio-cor">6.8</p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="bow-img">
-                            <img src="img/risoto.png" alt="">
-                            <div class="preco">
-                                <h2>R$45.90</h2>
-                            </div>
-                        </div>
-                        <h3>Risoto de frango</h3>
-                        <p>O melhor Risoto de camarão gostoso da bahia americana lala dajde</p>
-                        <div class="d-flex align-items-center">
-                            <i class="ph ph-users primary-apoio-cor me-1"></i>
-                            <p class="primary-apoio-cor">2 pessoas</p>
-                        </div>
-                        <div class="d-flex">
-                            <i class="ph ph-star primary-apoio-cor me-1"></i>
-                            <p class="primary-apoio-cor">6.8</p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="bow-img">
-                            <img src="img/risoto.png" alt="">
-                            <div class="preco">
-                                <h2>R$45.90</h2>
-                            </div>
-                        </div>
-                        <h3>Risoto de frango</h3>
-                        <p>O melhor Risoto de camarão gostoso da bahia americana lala dajde</p>
-                        <div class="d-flex align-items-center">
-                            <i class="ph ph-users primary-apoio-cor me-1"></i>
-                            <p class="primary-apoio-cor">2 pessoas</p>
-                        </div>
-                        <div class="d-flex">
-                            <i class="ph ph-star primary-apoio-cor me-1"></i>
-                            <p class="primary-apoio-cor">6.8</p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="bow-img">
-                            <img src="img/risoto.png" alt="">
-                            <div class="preco">
-                                <h2>R$45.90</h2>
-                            </div>
-                        </div>
-                        <h3>Risoto de frango</h3>
-                        <p>O melhor Risoto de camarão gostoso da bahia americana lala dajde</p>
-                        <div class="d-flex align-items-center">
-                            <i class="ph ph-users primary-apoio-cor me-1"></i>
-                            <p class="primary-apoio-cor">2 pessoas</p>
-                        </div>
-                        <div class="d-flex">
-                            <i class="ph ph-star primary-apoio-cor me-1"></i>
-                            <p class="primary-apoio-cor">6.8</p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="bow-img">
-                            <img src="img/risoto.png" alt="">
-                            <div class="preco">
-                                <h2>R$45.90</h2>
-                            </div>
-                        </div>
-                        <h3>Risoto de frango</h3>
-                        <p>O melhor Risoto de camarão gostoso da bahia americana lala dajde</p>
-                        <div class="d-flex align-items-center">
-                            <i class="ph ph-users primary-apoio-cor me-1"></i>
-                            <p class="primary-apoio-cor">2 pessoas</p>
-                        </div>
-                        <div class="d-flex">
-                            <i class="ph ph-star primary-apoio-cor me-1"></i>
-                            <p class="primary-apoio-cor">6.8</p>
+                            <p class="primary-apoio-cor">{{prato.estrela}}</p>
                         </div>
                     </div>
                 </div>

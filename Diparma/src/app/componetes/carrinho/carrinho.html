@@ -1,5 +1,5 @@
 <div class="modal-carrinho" [class.ativo-carrinho]="carrinhoAberto" (click)="fecharCarrinho()">
-    <div class="modal-conteudo-carrinho" [class.ativo-carrinho]="carrinhoAberto">
+    <div class="modal-conteudo-carrinho" [class.ativo-carrinho]="carrinhoAberto" (click)="$event.stopPropagation()">
         <div class="d-flex align-items-center mb-3">
             <h1>Cesta</h1>
             <i class="ph ph-tote ms-3"></i>
@@ -49,37 +49,6 @@
                         <select name="select">
                             <option value="valor1">1</option>
                             <option value="valor2" selected><p>20</p></option>
-                            <option value="valor3">3</option>
-                          </select>
-                        <button class="d-flex align-items-center"><i class="ph ph-trash"></i></button>
-                    </div>
-                </div>
-            </div>
-            <div class="prato">
-                <div class="img-prato">
-                    <img src="img/risoto.png" alt="">
-                </div>
-                <div class="info-prato">
-                    <p>Risoto de Camarão</p>
-                    <div class="d-flex align-items-center">
-                        <i class="ph ph-users-four me-1"></i>
-                        <p class="legenda">2 pessoas</p>
-                    </div>
-                    <div class="adcionais">
-                        <i class="ph ph-plus me-2"></i>
-                        <div class="adcionais-p">
-                            <p class="legenda">Camarões Salteados 100gr <span class="primary-apoio-cor">R$34,90</span></p>
-                            <p class="legenda">Camarões Salteados 100gr <span class="primary-apoio-cor">R$34,90</span></p>
-                            <p class="legenda">Camarões Salteados 100gr <span class="primary-apoio-cor">R$34,90</span></p>
-                        </div>
-                    </div>
-                </div>
-                <div class="preco ">
-                    <h2>R$76.99</h2>
-                    <div class="d-flex mt-auto justify-content-between">
-                        <select name="select">
-                            <option value="valor1">1</option>
-                            <option value="valor2" selected><p class="">20</p></option>
                             <option value="valor3">3</option>
                           </select>
                         <button class="d-flex align-items-center"><i class="ph ph-trash"></i></button>
