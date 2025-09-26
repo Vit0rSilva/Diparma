@@ -46,6 +46,7 @@ export class Principal implements OnInit {
   private initSwiper(){
 
     const swiper = new Swiper('.swiper-carrosel', {
+      modules: [Grid, Pagination, Navigation],
       slidesPerView: 2,
       spaceBetween: 30,
       initialSlide: 4,
@@ -73,8 +74,8 @@ export class Principal implements OnInit {
         998: { slidesPerView: 3.5, grid: { rows: 2 } },
         1194: { slidesPerView: 4.6, grid: { rows: 2 } },
       },
-      pagination: { el: '.pagination-pratos', clickable: true },
-      navigation: { nextEl: '.next-pratos', prevEl: '.prev-pratos' },
+      pagination: { el: '.swiper-pagination', clickable: true },
+      navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
     });
   
     const swiperComentario = new Swiper('.swiper-comentario', {
