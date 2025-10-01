@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, OnInit } from '@angular/core';
+import { Component, AfterViewInit,ElementRef, ViewChild , OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Footer } from '../../layout/footer/footer';
 import { Header } from '../../layout/header/header';
@@ -9,10 +9,6 @@ import { Api } from '../../../core/service/api';
 
 import Swiper from 'swiper';
 import { Grid, Pagination, Navigation } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/grid';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
 
 Swiper.use([Grid, Pagination, Navigation]);
 
@@ -27,6 +23,8 @@ export class Principal implements OnInit {
 
   pratos: Prato[] = [];
 
+  @ViewChild('boxButton') boxButton!: ElementRef<HTMLDivElement>;
+
   constructor(private api: Api){}
 
   ngOnInit(){
@@ -39,6 +37,14 @@ export class Principal implements OnInit {
       },
       error: (err) => {
         console.error('Error ao buscar pratos', err);
+      }
+    });
+    this.api.getEnderecoUsuario(1).subscribe({
+      next: (enderecos) => {
+        console.log('Endereços do usuário:', enderecos);
+      },
+      error: (err) => {
+        console.error('Erro ao buscar endereços do usuário', err);
       }
     });
   }
@@ -90,6 +96,24 @@ export class Principal implements OnInit {
         1200: { slidesPerView: 3.5 },
       },
     });
+
+    swiperComentario.on('slideNextTransitionStart', () => {
+  // Só esconder se o usuário estiver no primeiro slide indo pro próximo
+  if (swiperComentario.previousIndex === 0) {
+    this.boxButton.nativeElement.classList.remove('show');
+    this.boxButton.nativeElement.classList.add('hide');
+  }
+});
+
+swiperComentario.on('slideChange', () => {
+  // Quando voltar para o primeiro slide, mostrar novamente
+  if (swiperComentario.activeIndex === 0) {
+    this.boxButton.nativeElement.classList.remove('hide');
+    this.boxButton.nativeElement.classList.add('show');
+  }
+});
+
+    
   }
 
 }

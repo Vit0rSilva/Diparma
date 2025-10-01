@@ -9,18 +9,39 @@
                 <p>Endereço de entrega</p>
                 <p class="previsao"></p>
             </div>
-            <div class="d-flex justify-content-between align-items-center">
-                <h2>Celecino brito N120</h2>
-                <div class="previsao-editar">
-                    <button><i class="ph ph-pencil"></i></button>
+            @for(endereco of enderecos; track endereco.id){
+                @if(endereco.principal){
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h2>{{endereco.rua}} {{endereco.numero}}</h2>
+                        <div class="previsao-editar">
+                            <button><i class="ph ph-pencil"></i></button>
+                        </div>
+                    </div>
+                    <p class="legenda">{{endereco.cidade}} | {{endereco.bairro}} | {{endereco.complemento}}</p>
+                    <div class="d-flex align-items-center mt-2">
+                        <i class="ph ph-motorcycle me-3"></i>
+                        <p>20m-30m</p>
+                    </div>
                     
+                }
+            }
+            @if(enderecos.length === 0){
+            <div class="d-flex justify-content-between align-items-center">
+                <h2>Nenhum endereço cadatrado</h2>
+                <div class="previsao-editar">
+                    <button><i class="ph ph-plus"></i></button>
                 </div>
             </div>
-            <p class="legenda">Lauro de Freitas|Centro|Bloco 12 lote B</p>
-            <div class="d-flex align-items-center mt-2">
-                <i class="ph ph-motorcycle me-3"></i>
-                <p>20m-30m</p>
-            </div>
+            }
+            @else if(enderecoTodosNullPrincipal){
+                <div class="d-flex justify-content-between align-items-center">
+                    <h2>Nenhum endereço selecionado para entrega</h2>
+                    <div class="previsao-editar">
+                        <button><i class="ph ph-pencil"></i></button>
+                    </div>
+                </div>
+            }
+
         </div>
         <div class="box-pratos">
             

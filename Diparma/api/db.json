@@ -1,4 +1,38 @@
 {
+    "usuarios":[
+        {
+            "id": 1,
+            "nome": "Vinicius",
+            "email": "vinicius@gmail.com",
+            "cpf": "123.456.789-00",
+            "senha": "123456",
+            "telefone": "(11) 91234-5678",
+            "img": "user.png",
+            "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InZpbmkiLCJpYXQiOjE2ODgwOTYyNTV9.d8X4bX4Hk3v8jvY3KXG7n3bF5gYz5xQz8y5Z6Z5Z5Z5",
+            "enderecos" : [
+                {
+                    "id": 1,
+                    "rua": "Rua das Flores",
+                    "numero": "123",
+                    "complemento": "Apto 45",
+                    "bairro": "Jardim Primavera",
+                    "cidade": "São Paulo",
+                    "cep": "01234-567",
+                    "principal": false
+                },
+                {
+                    "id": 2,
+                    "rua": "Avenida Central",
+                    "numero": "456",
+                    "complemento": "Casa",
+                    "bairro": "Centro",
+                    "cidade": "Rio de Janeiro",
+                    "cep": "12345-678",
+                    "principal": true
+                }
+            ]
+        }
+    ],
     "pratos":[
         {
             "id": 1,

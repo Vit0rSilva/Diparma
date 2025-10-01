@@ -60,6 +60,9 @@ html, body{
 /*Button*/
 %button-primary{
     button{
+        display: flex;
+        justify-content: center;
+        color: $verde-claro;
         white-space: nowrap;
         transition: background 0.3s ease;
         background: $primary;
