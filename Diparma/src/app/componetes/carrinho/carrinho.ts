@@ -10,7 +10,7 @@ import { Endereco } from '../../models/endereco.model';
   templateUrl: './carrinho.html',
   styleUrl: './carrinho.scss'
 })
-export class Carrinho {
+export class CarrinhoComponente {
   carrinhoAberto: boolean = false;
   enderecos: Endereco[] = [];
   enderecoTodosNullPrincipal: boolean = false;

@@ -7,20 +7,20 @@
             border-radius: 5px 0 0 5px;
             padding: 10px;
             border: none;
-            background: $secondary;
-            border: 2px solid $secondary;
+            background: $primary;
+            border: 2px solid $primary;
             border-right: none;
             i{
-                color: $plano-de-fundo;
+                color: $verde-claro;
             }
             &:hover{
-                background: $secondary-apoio;
-                border:2px solid $secondary-apoio;
+                background: $primary-apoio;
+                border:2px solid $primary-apoio;
                 border-right: none;
             }
             &:active{
-                background: $secondary-pressed;
-                border:2px solid $secondary-pressed;
+                background: $primary-pressed;
+                border:2px solid $primary-pressed;
                 border-right: none;
             }
         }
@@ -28,31 +28,31 @@
             border-radius: 0 5px 5px 0;
             padding: 10px;
             border: none;
-            background: $secondary;
-            border: 2px solid $secondary;
+            background: $primary;
+            border: 2px solid $primary;
             border-left: none;
             i{
                 color: $plano-de-fundo
             }
             &:hover{
-                background: $secondary-apoio;
-                border:2px solid $secondary-apoio;
+                background: $primary-apoio;
+                border:2px solid $primary-apoio;
                 border-left: none;
             }
             &:active{
-                background: $secondary-pressed;
-                border:2px solid $secondary-pressed;
+                background: $primary-pressed;
+                border:2px solid $primary-pressed;
                 border-left: none;
             }
         }
         input{
             width: 100%;
             background: none;
-            border: 2px solid $secondary;
+            border: 2px solid $primary;
             padding: 10px 0 10px 10px;
             &:focus{
                 outline: none;
-                border-color: $secondary-pressed;
+                border-color: $primary-pressed;
                 box-shadow: 0 0 5px #0116047a;
             }
 

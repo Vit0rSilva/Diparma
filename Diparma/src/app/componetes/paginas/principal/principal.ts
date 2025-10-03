@@ -2,7 +2,7 @@ import { Component, AfterViewInit,ElementRef, ViewChild , OnInit } from '@angula
 import { CommonModule } from '@angular/common';
 import { Footer } from '../../layout/footer/footer';
 import { Header } from '../../layout/header/header';
-import { Carrinho } from '../../carrinho/carrinho';
+import { CarrinhoComponente } from '../../carrinho/carrinho';
 
 import { Prato } from '../../../models/prato.model';
 import { Api } from '../../../core/service/api';
@@ -15,7 +15,7 @@ Swiper.use([Grid, Pagination, Navigation]);
 @Component({
   selector: 'app-principal',
   standalone: true,
-  imports: [Footer, Header,CommonModule,Carrinho],
+  imports: [Footer, Header,CommonModule,CarrinhoComponente],
   templateUrl: './principal.html',
   styleUrls: ['./principal.scss']
 })

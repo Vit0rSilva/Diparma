@@ -30,6 +30,54 @@
                     "cep": "12345-678",
                     "principal": true
                 }
+            ],
+            "carrinho": [
+                {
+                    "prato":[
+                        {
+                            "id": 1,
+                            "nome": "Risoto de camarão",
+                            "preco": 212.99,
+                            "precoDesconto": 120.78,
+                            "pessoas": 4,
+                            "kcal" : 221,
+                            "descrição": "O risoto é um prato italiano cremoso feito com arroz de grãos curtos, cozido lentamente em caldo quente e mexido até liberar amido. Pode ser enriquecido com ingredientes como cogumelos, frutos do mar, legumes ou carnes, e finalizado com manteiga e queijo parmesão para intensificar sabor e textura.",
+                            "img": "risoto.png",
+                            "estrela":6.7,
+                            "legenda":"O risoto de camarão mais cremoso da Itália baiana delícia demais",
+                            "tipo":"risoto"
+                            
+                        },
+                        {
+                            "id": 2,
+                            "nome": "Risoto de Tomate",
+                            "preco": 182.99,
+                            "precoDesconto": 111.99,
+                            "pessoas": 4,
+                            "kcal" : 221,
+                            "descrição": "O risoto é um prato italiano cremoso feito com arroz de grãos curtos, cozido lentamente em caldo quente e mexido até liberar amido. Pode ser enriquecido com ingredientes como cogumelos, frutos do mar, legumes ou carnes, e finalizado com manteiga e queijo parmesão para intensificar sabor e textura.",
+                            "img": "risoto.png",
+                            "estrela":6.7,
+                            "legenda":"O risoto de camarão mais cremoso da Itália baiana delícia demais",
+                            "tipo":"risoto"
+                        }
+                    ],
+                    "extra":[
+                        {
+                            "id": 1,
+                            "nome": "Frango",
+                            "preco": 10.99,
+                            "precoDesconto": 8.78,
+                            "desconto": true,
+                            "descricao": "O risoto é um prato italiano cremoso feito com arroz de grãos curtos, cozido lentamente em caldo quente e mexido até liberar amido. Pode ser enriquecido com ingredientes como cogumelos, frutos do mar, legumes ou carnes, e finalizado com manteiga e queijo parmesão para intensificar sabor e textura.",
+                            "peso":100,
+                            "kcal": 123,
+                            "img": "risoto.png"
+                        }
+                    ],
+                    "quantidade": 3,
+                    "subtotal": 296
+                }
             ]
         }
     ],
@@ -216,6 +264,32 @@
             "estrela":8.7,
             "legenda":"O risoto de camarão mais cremoso da Itália baiana delícia demais",
             "tipo":"risoto"
+        }
+    ],
+    "bebida":[
+        {
+            "id": 1,
+            "nome": "Coca",
+            "preco": 12.99,
+            "precoDesconto": 8.78,
+            "desconto": true,
+            "descricao": "O risoto é um prato italiano cremoso feito com arroz de grãos curtos, cozido lentamente em caldo quente e mexido até liberar amido. Pode ser enriquecido com ingredientes como cogumelos, frutos do mar, legumes ou carnes, e finalizado com manteiga e queijo parmesão para intensificar sabor e textura.",
+            "img": "risoto.png",
+            "tipo":"refrigerante",
+            "unidadeMedida": 123
+        }
+    ],
+    "extra": [
+        {
+            "id": 1,
+            "nome": "Frango",
+            "preco": 10.99,
+            "precoDesconto": 8.78,
+            "desconto": true,
+            "descricao": "O risoto é um prato italiano cremoso feito com arroz de grãos curtos, cozido lentamente em caldo quente e mexido até liberar amido. Pode ser enriquecido com ingredientes como cogumelos, frutos do mar, legumes ou carnes, e finalizado com manteiga e queijo parmesão para intensificar sabor e textura.",
+            "peso":100,
+            "kcal": 123,
+            "img": "risoto.png"
         }
     ]
 }

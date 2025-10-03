@@ -1,3 +1,4 @@
+import { Carrinho } from "../componetes/carrinho/carrinho";
 import { Endereco } from "./endereco.model";
 
 export class Usuario{
@@ -10,4 +11,5 @@ export class Usuario{
     img?: string;
     token?: string;
     enderecos?: Endereco[];
+    carrinho?: Carrinho[];
 }

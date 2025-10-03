@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Usuario } from '../../models/usuario.model';
+import { Endereco } from '../../models/endereco.model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,5 +14,9 @@ export class User {
 
   getUsuarios(id: number): Observable<Usuario[]>{
     return this.http.get<Usuario[]>(this.apiUrl + 'usuarios?id='+id);
+  }
+
+  getEndereco(id: number): Observable<Endereco[]>{
+    return this.http.get<Endereco[]>(this.apiUrl + 'endereco?id=' + id);
   }
 }

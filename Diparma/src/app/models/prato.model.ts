@@ -9,6 +9,7 @@ export class Prato{
     img?: string;
     estrela?: number;
     legenda?: string;
+    peso?: number;
     tipo?: string;
 
 }
