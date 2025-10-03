@@ -1,4 +1,64 @@
 @use '../../../styles.scss' as *;
+
+%input-style-grup{
+    .input-style-grup{
+        display: flex;
+        .esquerda{
+            border-radius: 5px 0 0 5px;
+            padding: 10px;
+            border: none;
+            background: $secondary;
+            border: 2px solid $secondary;
+            border-right: none;
+            i{
+                color: $plano-de-fundo;
+            }
+            &:hover{
+                background: $secondary-apoio;
+                border:2px solid $secondary-apoio;
+                border-right: none;
+            }
+            &:active{
+                background: $secondary-pressed;
+                border:2px solid $secondary-pressed;
+                border-right: none;
+            }
+        }
+        .direita{
+            border-radius: 0 5px 5px 0;
+            padding: 10px;
+            border: none;
+            background: $secondary;
+            border: 2px solid $secondary;
+            border-left: none;
+            i{
+                color: $plano-de-fundo
+            }
+            &:hover{
+                background: $secondary-apoio;
+                border:2px solid $secondary-apoio;
+                border-left: none;
+            }
+            &:active{
+                background: $secondary-pressed;
+                border:2px solid $secondary-pressed;
+                border-left: none;
+            }
+        }
+        input{
+            width: 100%;
+            background: none;
+            border: 2px solid $secondary;
+            padding: 10px 0 10px 10px;
+            &:focus{
+                outline: none;
+                border-color: $secondary-pressed;
+                box-shadow: 0 0 5px #0116047a;
+            }
+
+        }
+    }
+}
 /*-----------------Carrinho-----------------*/
 .modal-carrinho{
     position: fixed;
@@ -225,6 +285,7 @@
                 }
 
                 @extend %button-primary;
+                @extend %input-style-grup;
             }
 
             .radio-buttons {

@@ -66,7 +66,7 @@ html, body{
         white-space: nowrap;
         transition: background 0.3s ease;
         background: $primary;
-        border: none;
+        border: 2px solid $primary;
         border-radius: 5px;
         padding: 10px 50px;
         p{
@@ -75,9 +75,12 @@ html, body{
     
         &:hover{
             background: $primary-apoio;
+            border: 2px solid $primary-apoio;
         }
         &:active{
             background: $primary-pressed;
+            border: 2px solid $primary-pressed;
+
         }
     }
 }
