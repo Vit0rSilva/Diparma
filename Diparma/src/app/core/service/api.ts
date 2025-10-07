@@ -66,6 +66,7 @@ export class Api {
     });
   }
   
+  /*
   getCarrinhoUsuario(id: number): Observable<Carrinho[]> {
     return new Observable<Endereco[]>((observer) => {
       this.user.getUsuarios(id).subscribe({
@@ -102,6 +103,7 @@ export class Api {
       });
     });
   }
+  */
 
   /*salvar(categoria: Categoria) : Observable<Categoria>{
     return this.http.post<Categoria>(this.apiUrl, categoria);
