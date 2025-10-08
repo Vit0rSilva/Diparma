@@ -10,7 +10,9 @@ class Item(Base):
     prato_id = Column(String(36), ForeignKey("pratos.id"), nullable=True)
     bebida_id = Column(String(36), ForeignKey("bebidas.id"), nullable=True)
     extra_id = Column(String(36), ForeignKey("extras.id"), nullable=True)
-    quantidade = Column(Integer, nullable=False, default=1)
+
+    quantidade_prato = Column(Integer, nullable=False, default=1)
+    quantidade_extra = Column(Integer, nullable=False, default=1)
 
     criado_em = Column(DateTime, default=datetime.utcnow)
     atualizado_em = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)

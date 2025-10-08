@@ -9,9 +9,10 @@ class Endereco(Base):
     id = Column(Integer, primary_key=True, autoincrement=True, index=True)
     rua = Column(String(255), nullable=False)
     numero = Column(String(10), nullable=False)
+    bairro = Column(String(100), nullable=False)
     cidade = Column(String(100), nullable=False)
     complemento = Column(String(100), nullable=True)
-    cep = Column(String(20), nullable=False)
+    cep = Column(String(8), nullable=False)
     lat = Column(String(50), nullable=True)
     lng = Column(String(50), nullable=True)
 

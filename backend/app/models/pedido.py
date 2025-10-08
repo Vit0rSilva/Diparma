@@ -16,6 +16,7 @@ class Pedido(Base):
     retirada_hora = Column(String(50), nullable=True)
     total = Column(Integer, nullable=False)
     status = Column(String(50), nullable=False, default="Pendente")
+    observacoes = Column(String(255), nullable=True)
 
     criado_em = Column(DateTime, default=datetime.utcnow)
     atualizado_em = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)

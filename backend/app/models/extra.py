@@ -16,7 +16,6 @@ class Extra(Base):
     imagem_url = Column(String(255), nullable=False)
     estrela = Column(Integer, nullable=True)
     legenda = Column(String(100), nullable=False)
-    tipo = Column(String(50), nullable=True)
 
     criado_em = Column(DateTime, default=datetime.utcnow)
     atualizado_em = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)

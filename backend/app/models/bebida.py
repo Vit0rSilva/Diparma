@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, ForeignKey, DateTime
+from sqlalchemy import Column,Boolean, Integer, String, ForeignKey, DateTime
 from datetime import datetime
 import uuid
 from sqlalchemy.orm import relationship
@@ -11,7 +11,7 @@ class Bebida(Base):
     nome = Column(String(100), nullable=False)
     preco = Column(Integer, nullable=False)
     precoDesconto = Column(Integer, nullable=True)
-    desconto = Column(Integer, default=0)
+    desconto = Column(Boolean, default=False)
     descricao = Column(String(255), nullable=False)
     imagem_url = Column(String(255), nullable=False)
     estrela = Column(Integer, nullable=True)

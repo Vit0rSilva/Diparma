@@ -1,9 +1,15 @@
-# test_connection.py
-from app.database import get_connection
+from pydantic import ValidationError
+from schemas.tipoBebidas import TipoBebidaBase
 
 try:
-    conn = get_connection()
-    print("✅ Conexão bem-sucedida com o banco de dados!")
-    conn.close()
-except Exception as e:
-    print("❌ Erro ao conectar:", e)
+    tipoBebida = TipoBebidaBase(
+        tipo="23",  # se isso for inválido, Pydantic vai lançar erro
+    )
+    print("✅ Validação bem-sucedida!")
+    print(tipoBebida.model_dump())
+    print("Test passed")
+
+except ValidationError as e:
+    print("❌ Erro de validação:")
+    print(e)
+    print("Test failed")

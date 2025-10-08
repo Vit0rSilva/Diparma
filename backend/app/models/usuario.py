@@ -15,6 +15,7 @@ class Usuarios(Base):
     cpf = Column(String(14), unique=True, nullable=False)
     senha = Column(String(255), nullable=False)
     relembrar_token = Column(String(255), nullable=True)
+    api_token = Column(String(255), nullable=False)
 
     criado_em = Column(DateTime, default=datetime.utcnow)
     atualizado_em = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
