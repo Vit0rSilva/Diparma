@@ -4,5 +4,4 @@ from uuid import UUID
 class TipoPratoBase(BaseModel):
     tipo: str
 
-    class Config:
-        orm_mode = True
+    model_config = {"from_attributes": True}

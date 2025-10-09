@@ -11,5 +11,4 @@ class ExtraBase(BaseModel):
     estrela: conint(ge=0, le=5) = None
     legenda: constr(max_length=100)
 
-    class Config:
-        orm_mode = True
+    model_config = {"from_attributes": True}

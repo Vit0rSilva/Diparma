@@ -16,5 +16,4 @@ class PratoBase(BaseModel):
     tipo: constr(max_length=50) = None
     tipo_prato_id: int
 
-    class Config:
-        orm_mode = True
+    model_config = {"from_attributes": True}

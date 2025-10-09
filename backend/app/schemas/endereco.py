@@ -14,5 +14,4 @@ class EnderecoBase(BaseModel):
     lng: constr(max_length=50) = None
     usuario_id: UUID
 
-    class Config:
-        orm_mode = True
+    model_config = {"from_attributes": True}

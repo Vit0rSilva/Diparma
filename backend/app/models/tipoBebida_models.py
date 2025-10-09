@@ -2,6 +2,7 @@ from sqlalchemy import Column, Integer, String, ForeignKey, DateTime
 from datetime import datetime
 from sqlalchemy.orm import relationship
 from app.database import Base
+from app.models.bebida_models import Bebida
 
 class TipoBebida(Base):
     __tablename__ = "enum_tipo_bebida"

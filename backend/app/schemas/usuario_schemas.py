@@ -6,7 +6,7 @@ class UsuarioBase(BaseModel):
     nome: str
     email:EmailStr
     telefone: int = constr(regex=r"\^d{11}$")
-    cpf: int = constr(regex=r"\^d{11}$")
+    cpf: constr(regex=r"\^d{11}$")
     
 class UsuarioCreate(UsuarioBase):
     senha: str
@@ -24,5 +24,4 @@ class UsuarioCreate(UsuarioBase):
         return v
 
 class UsuarioResponse(UsuarioBase):
-    class Config:
-        orm_mode = True
+    model_config = {"from_attributes": True}

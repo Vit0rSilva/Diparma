@@ -7,5 +7,4 @@ class CarrinhoBase(BaseModel):
     usuario_id: UUID
     subtotal: conint(ge=0)
 
-    class Config:
-        orm_mode = True
+    model_config = {"from_attributes": True}

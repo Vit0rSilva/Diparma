@@ -1,8 +1,14 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+from app.database import Base, engine
+from app.routers import tipoBebidas_routers, admins_routers
+from app.middlewares.error_handler import error_handler
+from app.middlewares.error_handler import validation_error_handler
+from fastapi.exceptions import RequestValidationError
 
-app = FastAPI()
+
+app = FastAPI(title="Diparma API")
 
 # ⚙️ Permitir que o Angular acesse o backend
 app.add_middleware(
@@ -13,16 +19,14 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Modelo de usuário
-class Usuario(BaseModel):
-    nome: str
-    email: str
+app.middleware("http")(error_handler)
 
-# Rotas
-@app.get("/")
-def home():
-    return {"mensagem": "API FastAPI funcionando!"}
+# ⚙️ Registra o tratador específico para erros de validação Pydantic
+app.add_exception_handler(RequestValidationError, validation_error_handler)
 
-@app.post("/usuarios/")
-def criar_usuario(usuario: Usuario):
-    return {"mensagem": f"Usuário {usuario.nome} cadastrado com sucesso!"}
+# Cria as tabelas
+Base.metadata.create_all(bind=engine)
+
+# Registra rotas
+app.include_router(tipoBebidas_routers.router)
+app.include_router(admins_routers.router)

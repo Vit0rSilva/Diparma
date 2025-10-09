@@ -9,5 +9,4 @@ class ItemBase(BaseModel):
     quantidade_prato = conint(ge=0, le=100)
     quantidade_extra = conint(ge=0, le=100) = None
 
-    class Config:
-        orm_mode = True
+    model_config = {"from_attributes": True}

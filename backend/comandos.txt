@@ -1,0 +1,15 @@
+//ATIVAR VENV
+venv\Scripts\activate
+
+//DESATIVAR 
+deactivate
+
+//ATIVAR API
+uvicorn main:app --reload
+
+
+//Rodar as migrations 
+    alembic revision --autogenerate -m "cria tabela administradores"
+
+    --dps rode
+    alembic upgrade head

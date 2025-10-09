@@ -13,5 +13,4 @@ class PedidoBase(BaseModel):
     status: constr(min_length=1, max_length=50) = "Pendente"  # Default status
     observacoes: Optional[constr(max_length=255)] = None
 
-    class Config:
-        orm_mode = True
+    model_config = {"from_attributes": True}

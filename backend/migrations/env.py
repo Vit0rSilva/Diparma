@@ -6,7 +6,8 @@ from sqlalchemy import pool
 from alembic import context
 
 from app.database import Base
-from app.models import endereco,usuario,tipoPrato,pedido,prato,item,tipoBebida,bebida,extra, carrinho
+from app.models import endereco,pedido,prato,item,extra, carrinho
+from app.models import bebida_models, tipoBebida_models, tipoPrato_models, usuario_models, administrador_models
 
 
 # this is the Alembic Config object, which provides
