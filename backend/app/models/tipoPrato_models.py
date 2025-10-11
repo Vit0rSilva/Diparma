@@ -12,4 +12,4 @@ class TipoPrato(Base):
     criado_em = Column(DateTime, default=datetime.utcnow)
     atualizado_em = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
-    prato = relationship("Prato", back_populates="tipo_prato")
+    pratos = relationship("Prato", back_populates="tipo_prato")

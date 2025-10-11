@@ -3,6 +3,7 @@ from sqlalchemy import Column, Integer, String, ForeignKey, DateTime
 from sqlalchemy.orm import relationship
 from app.database import Base
 from datetime import datetime
+from app.models.endereco_models import Enderecos
 
 class Usuarios(Base):
     __tablename__ = "usuarios"
@@ -15,9 +16,8 @@ class Usuarios(Base):
     cpf = Column(String(11), unique=True, nullable=False)
     senha = Column(String(255), nullable=False)
     relembrar_token = Column(String(255), nullable=True)
-    api_token = Column(String(255), nullable=False)
 
     criado_em = Column(DateTime, default=datetime.utcnow)
     atualizado_em = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
-    enderecos = relationship("Endereco", back_populates="usuario")
+    enderecos = relationship("Enderecos", back_populates="usuario", cascade="all, delete-orphan")

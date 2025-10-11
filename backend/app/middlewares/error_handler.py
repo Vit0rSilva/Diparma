@@ -1,77 +1,36 @@
 from fastapi import Request, HTTPException
-from fastapi.responses import JSONResponse
 from fastapi.exceptions import RequestValidationError
-from sqlalchemy.exc import IntegrityError, SQLAlchemyError
+from fastapi.responses import JSONResponse
 from app.schemas.response_schemas import ErrorResponse
+import traceback
 
-# ⚙️ Middleware principal para erros de execução
-async def error_handler(request: Request, call_next):
-    try:
-        return await call_next(request)
+async def http_exception_handler(request: Request, exc: HTTPException):
+    """
+    Substitui o comportamento padrão do FastAPI para HTTPException
+    e sempre retorna o formato padronizado ErrorResponse.
+    """
+    # exc.detail pode ser dict ou string; trate ambos
+    if isinstance(exc.detail, dict):
+        message = exc.detail.get("message", str(exc.detail))
+        error_code = exc.detail.get("error_code")
+    else:
+        message = str(exc.detail)
+        error_code = None
 
-    except IntegrityError as exc:
-        # Captura mensagem original do banco (útil para depuração)
-        error_message = str(exc.orig).lower()
+    content = ErrorResponse(
+        success=False,
+        message=message,
+        error_code=error_code,
+        data=None
+    ).model_dump()
 
-        # Detecta erro de duplicidade
-        if "unique constraint" in error_message or "duplicate" in error_message:
-            mensagem = "Já existe um registro com esse valor."
-            error_code = "DUPLICATE_ENTRY"
-        else:
-            mensagem = "Erro de integridade no banco de dados."
-            error_code = "INTEGRITY_ERROR"
-
-        return JSONResponse(
-            status_code=400,
-            content=ErrorResponse(
-                error_code=error_code,
-                message=mensagem
-            ).model_dump(),
-        )
-
-    except HTTPException as exc:
-        # Verifica se o detail já vem como dict (nos nossos erros customizados)
-        if isinstance(exc.detail, dict):
-            content = ErrorResponse(
-                success=False,
-                error_code=exc.detail.get("error_code"),
-                message=exc.detail.get("message")
-            ).model_dump()
-        else:
-            content = ErrorResponse(message=str(exc.detail)).model_dump()
-
-        return JSONResponse(status_code=exc.status_code, content=content)
-
-    except IntegrityError:
-        return JSONResponse(
-            status_code=400,
-            content=ErrorResponse(
-                error_code="INTEGRITY_ERROR",
-                message="Erro de integridade no banco de dados (valor duplicado ou inválido)."
-            ).model_dump(),
-        )
-
-    except SQLAlchemyError:
-        return JSONResponse(
-            status_code=500,
-            content=ErrorResponse(
-                error_code="DATABASE_ERROR",
-                message="Erro interno no banco de dados."
-            ).model_dump(),
-        )
-
-    except Exception as e:
-        return JSONResponse(
-            status_code=500,
-            content=ErrorResponse(
-                error_code="UNEXPECTED_ERROR",
-                message=f"Erro inesperado: {str(e)}"
-            ).model_dump(),
-        )
+    return JSONResponse(status_code=exc.status_code, content=content)
 
 
-# ⚙️ Captura erros de validação Pydantic
 async def validation_error_handler(request: Request, exc: RequestValidationError):
+    """
+    Transforma validações Pydantic/RequestValidationError no formato padronizado.
+    """
     erros = []
     for err in exc.errors():
         erros.append({
@@ -81,11 +40,29 @@ async def validation_error_handler(request: Request, exc: RequestValidationError
             "valor_enviado": err.get("input")
         })
 
-    return JSONResponse(
-        status_code=422,
-        content=ErrorResponse(
-            error_code="VALIDATION_ERROR",
-            message="Erro de validação nos dados enviados.",
-            data={"erros": erros}
-        ).model_dump(),
-    )
+    content = ErrorResponse(
+        success=False,
+        message="Erro de validação nos dados enviados.",
+        error_code="VALIDATION_ERROR",
+        data={"erros": erros}
+    ).model_dump()
+
+    return JSONResponse(status_code=422, content=content)
+
+
+async def generic_exception_handler(request: Request, exc: Exception):
+    """
+    Catch-all: em caso de erro inesperado, retorna o formato padronizado.
+    (Você pode logar/traceback aqui conforme precisar.)
+    """
+    # Opcional: log mais detalhado
+    traceback.print_exc()
+
+    content = ErrorResponse(
+        success=False,
+        message="Erro inesperado no servidor.",
+        error_code="UNEXPECTED_ERROR",
+        data=None
+    ).model_dump()
+
+    return JSONResponse(status_code=500, content=content)

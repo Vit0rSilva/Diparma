@@ -3,7 +3,7 @@ from datetime import datetime
 from sqlalchemy.orm import relationship
 from app.database import Base
 
-class Endereco(Base):
+class Enderecos(Base):
     __tablename__ = "enderecos"
 
     id = Column(Integer, primary_key=True, autoincrement=True, index=True)
