@@ -1,57 +1,50 @@
-# app/api/carrinhos.py
+# app/api/carrinho.py
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
-from app.schemas import item_schemas, carrinho_schemas, response_schemas
-from app.repositories import item_repositories
+from app.schemas import carrinho_schemas, response_schemas
+from app.repositories import carrinho_repositories as cart_repo
 from app.deps import get_db, get_current_usuario
-from uuid import UUID
 
-router = APIRouter(prefix="/carrinhos", tags=["Carrinho"])
-
-@router.post("/", response_model=response_schemas.SuccessResponse, status_code=status.HTTP_201_CREATED)
-def adicionar_ao_carrinho(payload: item_schemas.ItemCreate, db: Session = Depends(get_db), usuario = Depends(get_current_usuario)):
-    novo_item, carrinho_or_err = item_repositories.add_to_cart(db, usuario.id, payload)
-    if novo_item is None:
-        # carrinho_or_err é dicionário de erro
-        raise HTTPException(status_code=400, detail=carrinho_or_err)
-
-    # Formata saída: retorna a entrada do carrinho (se existir) ou o item criado com um objeto carrinho
-    # Se foi encontrado existing_carrinho, carrinho_or_err será a instância de Carrinho; mas o repositório pode retornar (item, carrinho)
-    # Aqui vamos montar uma resposta simples: retornar o item criado/atualizado
-    item_resp = item_schemas.ItemResponse.model_validate(novo_item).model_dump()
-    return response_schemas.SuccessResponse(message="Item adicionado/atualizado no carrinho", data=item_resp)
+router = APIRouter(prefix="/carrinho", tags=["Carrinho"])
 
 @router.get("/", response_model=response_schemas.SuccessResponse)
 def listar_carrinho(db: Session = Depends(get_db), usuario = Depends(get_current_usuario)):
-    entries = item_repositories.list_cart_for_user(db, usuario.id)
-    # entries são instâncias de Carrinho com relationship.item carregado (se lazy, SQLAlchemy faz lazy load)
-    data = []
-    for e in entries:
-        # montar CarrinhoResponse
-        carrinho_data = carrinho_schemas.CarrinhoResponse.model_validate(e).model_dump()
-        data.append(carrinho_data)
+    cart, items = cart_repo.list_cart_items(db, usuario.id)
+    items_data = [carrinho_schemas.CarrinhoItemResponse.model_validate(i).model_dump() for i in items]
+    resp = {
+        "id": cart.id,
+        "usuario_id": cart.usuario_id,
+        "status": cart.status,
+        "itens": items_data,
+        "criado_em": cart.criado_em,
+        "atualizado_em": cart.atualizado_em
+    }
+    totals = cart_repo.get_cart_totals(db, usuario.id)
+    resp.update({"total": float(totals["total"]), "total_itens": totals["total_itens"], "items_count": totals["items_count"]})
+    return response_schemas.SuccessResponse(message="Carrinho do usuário", data=resp)
 
-    return response_schemas.SuccessResponse(
-        message="Listando itens do carrinho",
-        data={"itens": data, "total_itens": len(data)}
-    )
+@router.post("/", response_model=response_schemas.SuccessResponse, status_code=status.HTTP_201_CREATED)
+def adicionar_item(payload: carrinho_schemas.CarrinhoItemCreate, db: Session = Depends(get_db), usuario = Depends(get_current_usuario)):
+    novo, err = cart_repo.add_item_to_cart(db, usuario.id, payload)
+    if err:
+        raise HTTPException(status_code=400, detail=err)
+    return response_schemas.SuccessResponse(message="Item adicionado ao carrinho", data=carrinho_schemas.CarrinhoItemResponse.model_validate(novo))
 
-@router.put("/{carrinho_id}", response_model=response_schemas.SuccessResponse)
-def atualizar_item_carrinho(carrinho_id: UUID, payload: item_schemas.ItemUpdate, db: Session = Depends(get_db), usuario = Depends(get_current_usuario)):
-    updated = item_repositories.update_cart_item_quantities(db, carrinho_id, usuario.id, payload)
-    if not updated:
-        raise HTTPException(status_code=404, detail={"message": "Item do carrinho não encontrado", "error_code": "NOT_FOUND_CARRINHO"})
-    # retornar carrinho atualizado
-    return response_schemas.SuccessResponse(message="Item atualizado com sucesso", data=carrinho_schemas.CarrinhoResponse.model_validate(updated))
+@router.put("/{item_id}", response_model=response_schemas.SuccessResponse)
+def atualizar_item(item_id: int, payload: carrinho_schemas.CarrinhoItemUpdate, db: Session = Depends(get_db), usuario = Depends(get_current_usuario)):
+    updated = cart_repo.update_cart_item(db, usuario.id, item_id, payload)
+    if updated is None:
+        raise HTTPException(status_code=404, detail={"message": "Item não encontrado ou removido (quantidade zero)", "error_code": "NOT_FOUND_ITEM"})
+    return response_schemas.SuccessResponse(message="Item atualizado", data=carrinho_schemas.CarrinhoItemResponse.model_validate(updated))
 
-@router.delete("/{carrinho_id}", response_model=response_schemas.SuccessResponse)
-def remover_item_carrinho(carrinho_id: UUID, db: Session = Depends(get_db), usuario = Depends(get_current_usuario)):
-    removed = item_repositories.remove_cart_entry(db, carrinho_id, usuario.id)
-    if not removed:
-        raise HTTPException(status_code=404, detail={"message": "Item do carrinho não encontrado", "error_code": "NOT_FOUND_CARRINHO"})
-    return response_schemas.SuccessResponse(message="Item removido do carrinho", data=False)
+@router.delete("/{item_id}", response_model=response_schemas.SuccessResponse)
+def remover_item(item_id: int, db: Session = Depends(get_db), usuario = Depends(get_current_usuario)):
+    ok = cart_repo.remove_cart_item(db, usuario.id, item_id)
+    if not ok:
+        raise HTTPException(status_code=404, detail={"message":"Item não encontrado","error_code":"NOT_FOUND_ITEM"})
+    return response_schemas.SuccessResponse(message="Item removido", data=False)
 
 @router.delete("/", response_model=response_schemas.SuccessResponse)
-def limpar_carrinho(db: Session = Depends(get_db), usuario = Depends(get_current_usuario)):
-    item_repositories.clear_cart(db, usuario.id)
-    return response_schemas.SuccessResponse(message="Carrinho limpo com sucesso", data=False)
+def limpar_cart(db: Session = Depends(get_db), usuario = Depends(get_current_usuario)):
+    cart_repo.clear_cart(db, usuario.id)
+    return response_schemas.SuccessResponse(message="Carrinho limpo", data=False)

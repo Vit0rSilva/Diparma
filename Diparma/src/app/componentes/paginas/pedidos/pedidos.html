@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pasta La Vista Baby - Pedido de Comida Italiana</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/feather-icons"></script>
+    <script src="https://cdn.jsdelivr.net/npm/feather-icons/dist/feather.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@800&family=Lora:wght@400&display=swap');
+        
+        :root {
+            --primary: #042404;
+            --primary-apoio: #256020;
+            --primary-pressed: #021E05;
+            --secondary: #D39724;
+            --secondary-apoio: #E4B856;
+            --secondary-pressed: #B57A1A;
+            --plano-de-fundo: #F8F9FA;
+            --plano-de-fundo-2: #EFEFEF;
+            --verde-claro: #EBFBEE;
+            --amarelo-claro: #FDF7F1;
+        }
+        
+        body {
+            font-family: 'Lora', serif;
+            background-color: var(--plano-de-fundo);
+            color: #495057;
+            margin: 0;
+            padding: 0;
+        }
+        
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 0 !important;
+        }
+        
+        h1 {
+            color: #212529;
+            font-size: 40.5px;
+        }
+        
+        h2 {
+            color: #343A40;
+            font-size: 27px;
+        }
+        
+        h3 {
+            color: #343A40;
+            font-size: 22px;
+        }
+        
+        p, a, label {
+            font-size: 18px;
+            margin-bottom: 0 !important;
+        }
+        
+        .legenda {
+            color: #495057;
+            font-size: 12px;
+        }
+        
+        .button-primary {
+            display: flex;
+            justify-content: center;
+            color: var(--verde-claro);
+            white-space: nowrap;
+            transition: background 0.3s ease;
+            background: var(--primary);
+            border: 2px solid var(--primary);
+            border-radius: 5px;
+            padding: 10px 50px;
+        }
+        
+        .button-primary:hover {
+            background: var(--primary-apoio);
+            border: 2px solid var(--primary-apoio);
+        }
+        
+        .button-primary:active {
+            background: var(--primary-pressed);
+            border: 2px solid var(--primary-pressed);
+        }
+        
+        .button-primary-border {
+            white-space: nowrap;
+            transition: background 0.3s ease;
+            background: none;
+            border: 2px solid var(--primary);
+            border-radius: 5px;
+            padding: 10px 50px;
+            display: flex;
+            justify-content: center;
+            color: var(--primary);
+        }
+        
+        .button-primary-border:hover {
+            background: rgba(4, 36, 4, 0.1);
+        }
+        
+        .button-primary-border:active {
+            background: var(--primary-pressed);
+            color: var(--verde-claro);
+        }
+        
+        .fancy-link {
+            position: relative;
+            text-decoration: none;
+            transition: all 0.15s ease-out;
+        }
+        
+        .fancy-link:before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            bottom: 0;
+            left: 0;
+            background: var(--primary-apoio);
+            visibility: hidden;
+            transform: scaleX(0);
+            transition: all 0.3s ease-in-out;
+        }
+        
+        .fancy-link:hover {
+            color: var(--primary-apoio);
+            transition: all 0.15s ease-out;
+        }
+        
+        .fancy-link:hover:before {
+            visibility: visible;
+            transform: scaleX(1);
+        }
+        
+        .img-nav {
+            width: 80px;
+        }
+        
+        .icon-btn i {
+            color: var(--primary);
+            font-size: 30px;
+            transition: all 0.5s;
+        }
+        
+        .icon-btn:hover i {
+            color: var(--primary-apoio);
+        }
+        
+        .icon-btn:active i {
+            color: var(--primary-pressed);
+        }
+        
+        .pedido-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .pedido-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .status-badge {
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+        
+        .status-em_andamento {
+            background-color: #E4B856;
+            color: white;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <header class="bg-white shadow-sm">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="#" class="flex items-center">
+                <img src="http://static.photos/food/200x200/42" alt="Logotipo" class="img-nav rounded-full">
+            </a>
+            
+            <nav class="hidden md:flex space-x-8">
+                <a href="#" class="fancy-link text-[23px] font-playfair text-[#042404]">Principal</a>
+                <a href="#" class="fancy-link text-[23px] font-playfair text-[#042404]">Pratos</a>
+                <a href="#" class="fancy-link text-[23px] font-playfair text-[#042404]">Sobre</a>
+            </nav>
+            
+            <div class="flex space-x-4">
+                <button class="icon-btn"><i data-feather="user"></i></button>
+                <button class="icon-btn"><i data-feather="shopping-bag"></i></button>
+            </div>
+        </div>
+    </header>
+    
+    <main class="container mx-auto px-4 py-8">
+        <h1 class="text-4xl font-bold mb-8 text-center text-[#042404]">Meus Pedidos</h1>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div class="pedido-card p-6">
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <h3 class="text-xl font-bold">Pedido #20246039</h3>
+                        <p class="text-gray-600">12/10/2025 02:38</p>
+                    </div>
+                    <span class="status-badge status-em_andamento">Em Andamento</span>
+                </div>
+                
+                <div class="mb-4">
+                    <div class="flex justify-between items-center py-2 border-b">
+                        <div>
+                            <h4 class="font-bold">Risoto de Camarão</h4>
+                            <p class="text-gray-600">x3</p>
+                        </div>
+                        <span class="font-bold">R$ 369,00</span>
+                    </div>
+                </div>
+                
+                <div class="flex justify-between items-center mb-4">
+                    <p class="font-bold">Frete:</p>
+                    <span>R$ 50,00</span>
+                </div>
+                
+                <div class="flex justify-between items-center mb-4">
+                    <p class="font-bold">Total:</p>
+                    <span class="text-xl font-bold">R$ 419,00</span>
+                </div>
+                
+                <p class="text-gray-600 italic mb-4">"Sem cebola no prato principal, por favor"</p>
+                
+                <div class="flex space-x-4">
+                    <button class="button-primary-border flex-1">Acompanhar</button>
+                    <button class="button-primary flex-1">Avaliar</button>
+                </div>
+            </div>
+            
+            <div class="pedido-card p-6">
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <h3 class="text-xl font-bold">Pedido #7a79d312</h3>
+                        <p class="text-gray-600">12/10/2025 01:53</p>
+                    </div>
+                    <span class="status-badge status-em_andamento">Em Andamento</span>
+                </div>
+                
+                <div class="mb-4">
+                    <div class="flex justify-between items-center py-2 border-b">
+                        <div>
+                            <h4 class="font-bold">Coca Cola</h4>
+                            <p class="text-gray-600">x1</p>
+                        </div>
+                        <span class="font-bold">R$ 13,90</span>
+                    </div>
+                </div>
+                
+                <div class="flex justify-between items-center mb-4">
+                    <p class="font-bold">Frete:</p>
+                    <span>R$ 10,00</span>
+                </div>
+                
+                <div class="flex justify-between items-center mb-4">
+                    <p class="font-bold">Total:</p>
+                    <span class="text-xl font-bold">R$ 23,90</span>
+                </div>
+                
+                <p class="text-gray-600 italic mb-4">"Sem cebola no prato principal, por favor"</p>
+                
+                <div class="flex space-x-4">
+                    <button class="button-primary-border flex-1">Acompanhar</button>
+                    <button class="button-primary flex-1">Avaliar</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center mt-8">
+            <h2 class="text-2xl font-bold mb-4 text-[#042404]">Pronto para mais?</h2>
+            <a href="#" class="button-primary inline-block px-12">Fazer Novo Pedido</a>
+        </div>
+    </main>
+    
+    <footer class="bg-[#042404] text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Pasta La Vista Baby</h3>
+                    <p class="mb-4">A melhor experiência em culinária italiana na sua casa.</p>
+                    <div class="flex space-x-4">
+                        <a href="#"><i data-feather="instagram"></i></a>
+                        <a href="#"><i data-feather="facebook"></i></a>
+                        <a href="#"><i data-feather="twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Links Rápidos</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-[#E4B856] transition">Cardápio</a></li>
+                        <li><a href="#" class="hover:text-[#E4B856] transition">Promoções</a></li>
+                        <li><a href="#" class="hover:text-[#E4B856] transition">Sobre Nós</a></li>
+                        <li><a href="#" class="hover:text-[#E4B856] transition">Contato</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Contato</h3>
+                    <p class="flex items-center mb-2"><i data-feather="phone" class="mr-2"></i> (11) 1234-5678</p>
+                    <p class="flex items-center mb-2"><i data-feather="mail" class="mr-2"></i> contato@pastalavista.com</p>
+                    <p class="flex items-center"><i data-feather="map-pin" class="mr-2"></i> R. Italia, 123 - São Paulo</p>
+                </div>
+            </div>
+            
+            <div class="border-t border-[#256020] mt-8 pt-6 text-center">
+                <p>&copy; 2025 Pasta La Vista Baby. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        feather.replace();
+        
+        // Animação suave ao rolar
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, ForeignKey, DateTime
+from sqlalchemy import Column, Integer, String, ForeignKey, DateTime, Boolean
 from datetime import datetime
 from sqlalchemy.orm import relationship
 from app.database import Base
@@ -15,6 +15,7 @@ class Enderecos(Base):
     cep = Column(String(8), nullable=False)
     lat = Column(String(50), nullable=True)
     lng = Column(String(50), nullable=True)
+    endereco_principal = Column(Boolean, default=False)
 
     criado_em = Column(DateTime, default=datetime.utcnow)
     atualizado_em = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)

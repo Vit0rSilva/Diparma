@@ -1,0 +1,148 @@
+<div class="container-fluid p-0">
+        <div class="row g-0 min-vh-100">
+            <!-- Left Side - Promotional Carousel -->
+            <div class="col-lg-6 promo-section d-none d-lg-flex">
+                <a href="/" class="home-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                        <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                    </svg>
+                </a>
+                
+                <div class="carousel-container">
+                    <div id="promoCarousel" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="promo-content">
+                                    <div class="promo-image">
+                                        <img src="https://images.unsplash.com/photo-1621996346565-e3dbc646d9a9?w=800&q=80" alt="Pasta Italiana">
+                                    </div>
+                                    <div class="promo-text">
+                                        <h2>Marca que agrada o paladar</h2>
+                                        <p>Marca que agrada o paladar de quaisquer pessoas e vai ao brasil de marcaos gestiona alara meninos e meninas e marcaana bebe deale</p>
+                                        <div class="rating">
+                                            <span>★★★★</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="promo-content">
+                                    <div class="promo-image">
+                                        <img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=800&q=80" alt="Pizza Margherita">
+                                    </div>
+                                    <div class="promo-text">
+                                        <h2>Sabores autênticos da Itália</h2>
+                                        <p>Experimente a verdadeira culinária italiana com ingredientes frescos e receitas tradicionais que encantam gerações</p>
+                                        <div class="rating">
+                                            <span>★★★★★</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <div class="promo-content">
+                                    <div class="promo-image">
+                                        <img src="https://images.unsplash.com/photo-1595295333158-4742f28fbd85?w=800&q=80" alt="Risotto">
+                                    </div>
+                                    <div class="promo-text">
+                                        <h2>Tradição em cada prato</h2>
+                                        <p>Descubra o melhor da gastronomia italiana com pratos preparados com amor e dedicação pelos nossos chefs</p>
+                                        <div class="rating">
+                                            <span>★★★★</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Carousel Indicators -->
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#promoCarousel" data-bs-slide-to="0" class="active"></button>
+                            <button type="button" data-bs-target="#promoCarousel" data-bs-slide-to="1"></button>
+                            <button type="button" data-bs-target="#promoCarousel" data-bs-slide-to="2"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side - Login Form -->
+            <div class="col-lg-6 login-section">
+                <div class="login-container">
+                    <div class="login-content">
+                        <h1 class="login-title">Login</h1>
+                        
+                        <div class="welcome-message">
+                            <h2>Bem vindo de volta o melhor do DiParma!!</h2>
+                            <p>Entre ou crie sua conta</p>
+                        </div>
+
+                        <form id="loginForm" class="loginForm" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                            <div class="mb-2">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" formControlName="email" class="form-control" id="email" placeholder="seu@email.com" required>
+                                <div class="erro" *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched">
+                                    Email inválido
+                                </div>
+                            </div>
+
+                            <div class="mb-2 position-relative">
+                                <label for="password" class="form-label">Senha</label>
+                                <input formControlName="senha" type="password" class="form-control" id="password" placeholder="••••••••••••••" required>
+                                <button type="button" class="password-toggle" id="togglePassword">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="eye-icon">
+                                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                        <circle cx="12" cy="12" r="3"></circle>
+                                    </svg>
+                                </button>
+                                <div class="erro" *ngIf="loginForm.get('senha')?.invalid && loginForm.get('senha')?.touched">
+                                    Senha obrigatória
+                                </div>
+                            </div>
+
+                            <div class="form-options">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="rememberMe">
+                                    <label class="form-check-label" for="rememberMe">
+                                        Me lembre depois
+                                    </label>
+                                </div>
+                                <a href="#" class="forgot-password">Esqueci minha senha</a>
+                            </div>
+
+                            <div class="submit-btn">
+                                <button [disabled]="carregando"><p>{{ carregando ? 'Entrando...' : 'Entrar' }}</p></button>
+                            </div>
+                        </form>
+                        <p class="mensagem">{{ mensagem }}</p>
+
+                        <div class="divider">
+                            <span>Outras formas de login</span>
+                        </div>
+
+                        <div class="social-login">
+                            <button type="button" class="btn btn-outline-secondary social-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none">
+                                    <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                                    <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                                    <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                                    <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                                </svg>
+                                Conectar com o Google
+                            </button>
+                            <button type="button" class="btn btn-outline-secondary social-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/>
+                                </svg>
+                                Conectar com a Apple
+                            </button>
+                        </div>
+
+                        <div class="signup-link">
+                            Não tem uma conta DiParma? <a href="/registro">Criar Agora</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

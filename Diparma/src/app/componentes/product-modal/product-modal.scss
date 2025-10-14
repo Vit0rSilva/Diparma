@@ -1,0 +1,92 @@
+/* product-modal.scss */
+@use '../../../styles.scss' as *;
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 999;
+}
+
+.modal {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  height: 400px;
+  width: min(900px, 95%);
+  background: #EFEFEF;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+  z-index: 1000;
+  padding: 18px;
+  display: block !important;
+}
+
+.modal-body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.box-decricai-img{
+  display: flex;
+
+}
+.modal .left img {
+  width: 350px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.modal .right { flex: 1; }
+.close-btn {
+  position: absolute;
+  right: 8px;
+  top: 6px;
+  background: transparent;
+  border: none;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+.meta {
+  display:flex;
+  flex-direction: column;
+  gap: 5px;
+  color: #666;
+}
+
+.quantidade { margin-top: 12px; }
+.qty-controls {
+  display:flex;
+  gap:8px;
+  align-items:center;
+}
+.qty-controls input {
+  width: 64px;
+  text-align:center;
+  padding:8px;
+  border-radius:6px;
+  border:1px solid #ddd;
+}
+.qty-controls button {
+  width:36px;
+  height:36px;
+  border-radius:6px;
+  border:1px solid #ddd;
+  background:#f5f5f5;
+}
+
+.actions {
+  margin-top:18px;
+  display:flex;
+  gap:12px;
+  justify-content: center;
+  margin-top: auto;
+  .btn-primary {
+    @extend %button-primary;
+  }
+  .btn-secondary {
+    @extend %button-primary-border;
+  }
+}

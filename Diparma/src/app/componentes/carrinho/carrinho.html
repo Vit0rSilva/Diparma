@@ -1,0 +1,243 @@
+<div class="modal-carrinho" [class.ativo-carrinho]="carrinhoAberto" (click)="fecharCarrinho()">
+    <div class="modal-conteudo-carrinho" [class.ativo-carrinho]="carrinhoAberto" (click)="$event.stopPropagation()">
+        @if((carrinho?.itens?.length ?? 0) === 0){
+            <div class="d-flex flex-column">
+                <div class="d-flex align-items-center mb-3">
+                    <h1>Cesta</h1>
+                    <i class="ph ph-tote ms-3"></i>
+                </div>
+            </div>
+            <h2 class="text-center mt-5">Cesta vazia, comece a comprar agora</h2>
+        }@else{
+            @if(etapaCesta === 'cesta'){
+                <div class="vh-100 d-flex flex-column">
+                    <div class="d-flex align-items-center mb-3">
+                        <h1>Cesta</h1>
+                        <i class="ph ph-tote ms-3"></i>
+                    </div>
+                    <div class="box-endereco">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <p>Endereço de entrega</p>
+                            <p class="previsao"></p>
+                        </div>
+                        @for(endereco of enderecos; track endereco.id){
+                            @if(endereco.endereco_principal){
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h2>{{endereco.rua}} {{endereco.numero}}</h2>
+                                    <div class="previsao-editar">
+                                        <button><i class="ph ph-pencil"></i></button>
+                                    </div>
+                                </div>
+                                <p class="legenda">{{endereco.cidade}} | {{endereco.bairro}} | {{endereco.complemento}}</p>
+                                <div class="d-flex align-items-center mt-2">
+                                    <i class="ph ph-motorcycle me-3"></i>
+                                    <p>20m-30m</p>
+                                </div>
+                            }
+                        }
+                        @if(enderecos.length === 0){
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h2>Nenhum endereço cadatrado</h2>
+                            <div class="previsao-editar">
+                                <button><i class="ph ph-plus"></i></button>
+                            </div>
+                        </div>
+                        }
+                        @else if(enderecoTodosNullPrincipal){
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h2>Nenhum endereço selecionado para entrega</h2>
+                                <div class="previsao-editar">
+                                    <button><i class="ph ph-pencil"></i></button>
+                                </div>
+                            </div>
+                        }
+            
+                    </div>
+                    <div class="box-pratos">
+                        @for (item of carrinho?.itens ?? []; track item.id) {
+                            @if(item?.prato){
+                                <div class="prato">
+                                    <div class="img-prato">
+                                        <img src="img/pratos/{{item.prato?.imagem_url}}" alt="">
+                                    </div>
+                                    <div class="info-prato">
+                                        <p>{{item.prato?.nome}}</p>
+                                        <div class="d-flex align-items-center">
+                                            <i class="ph ph-users-four me-1"></i>
+                                            <p class="legenda">{{item.prato?.pessoas}} pessoas</p>
+                                        </div>
+                                        <div class="adcionais">
+                                            <i class="ph ph-plus me-2"></i>
+                                            <div class="adcionais-p">
+                                                <p class="legenda">Camarões Salteados 100gr <span class="primary-apoio-cor">R$34,90</span></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="preco ">
+                                        <h2>R${{item.prato?.preco}}</h2>
+                                        <div class="d-flex mt-auto justify-content-between">
+                                            <select name="select">
+                                                <option value="valor1">1</option>
+                                                <option value="valor2" selected><p>{{item.quantidade_prato}}</p></option>
+                                                <option value="valor3">3</option>
+                                                <option value="valor3">4</option>
+                                                <option value="valor3">5</option>
+                                              </select>
+                                            <button (click)="excluirItens(item.id)" class="d-flex align-items-center"><i class="ph ph-trash"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    </div>
+                    <div class="box-sub-total">
+                        
+                        <hr>
+                        <div class="d-flex justify-content-between">
+                            <p>Sub Total</p>
+                            <p>R${{carrinho?.total}}</p>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <p>Frete</p>
+                            <p>R$8</p>
+                        </div>
+                        <div class="box-cupom">
+                            <p>Encontrar promoções</p>
+                            @if(caixaCupom === 'fechado'){
+                                <button (click)="cupomDesconto('aberto')"><i class="ph ph-ticket"></i><p>Adcionar cupom</p></button>
+                            }@else if(caixaCupom === 'aberto'){
+                                <div class="input-style-grup">
+                                    <button (click)="cupomDesconto('fechado')" class="esquerda" type="button"><i class="ph ph-x"></i></button>
+                                    <input type="text" name="" id="" placeholder="Exemplo: SITE10">
+                                    <button class="direita" type="button"><i class="ph ph-magnifying-glass"></i></button>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                    <div class="box-total">
+                        <hr>
+                        <div class="d-flex justify-content-between">
+                            <p>Total</p>
+                            <p>R${{totalComFrete}}</p>
+                        </div>
+                        <div class="button-total button-expandido">
+                            <button class="button-proximo" (click)="irParaPagamento()"><p>Proximo</p><i class="ph ph-arrow-right ms-2"></i></button>
+                        </div>
+                    </div>
+                </div>
+            }@else if(etapaCesta === 'pagamento'){
+                <div class="vh-100 d-flex flex-column">
+                    <div class="d-flex align-items-center mb-3">
+                        <h1>Cesta</h1>
+                        <i class="ph ph-tote ms-3"></i>
+                    </div>
+                    <div class="box-endereco">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <p>Endereço de entrega</p>
+                            <p>Previsão de entrega</p>
+                        </div>
+                        @for(endereco of enderecos; track endereco.id){
+                            @if(endereco.endereco_principal){
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <h2>{{endereco.rua}} {{endereco.numero}}</h2>
+                                    <div class="previsao-editar">
+                                        <i class="ph ph-clock-countdown me-2"></i><h2>22:45</h2>
+                                    </div>
+                                </div>
+                                <p class="legenda">{{endereco.cidade}} | {{endereco.bairro}} | {{endereco.complemento}}</p>
+                                <div class="d-flex align-items-center mt-2">
+                                    <i class="ph ph-motorcycle me-3"></i>
+                                    <p>20m-30m</p>
+                                </div>
+                                
+                            }
+                        }
+            
+                    </div>
+                    <div class="box-pratos"> 
+                        @for (item of carrinho?.itens ?? []; track item.id) {
+                            @if(item?.prato){
+                                <div class="prato-minimizado">
+                                <p>{{carrinho?.total_itens}} - {{item?.prato?.nome}}</p>
+                                <p>R${{item?.subtotal}}</p>
+                                </div>
+                            }
+                        }
+                    </div>
+                    <div class="box-sub-total">
+                        
+                        <hr>
+        
+                        <div class="radio-buttons">
+                            <label class="radio-btn">
+                                <input (change)="selecionarCartao()" type="radio" name="opcao" value="cartao" checked>
+                                <p>Cartão <i class="ph ph-credit-card"></i></p>
+                            </label>
+                            <label class="radio-btn">
+                                <input (change)="selecionarDinheiro()" type="radio" name="opcao"  value="dinheiro">
+                                <p>Dinheiro <i class="ph ph-credit-card"></i></p>
+                            </label>
+                            <label class="radio-btn">
+                                <input (change)="selecionarPix()" type="radio" name="opcao" value="pix">
+                                <p>Pix <i class="ph ph-credit-card"></i></p>
+                            </label>
+                        </div>
+                        <div class="forma-pagamento">
+                            
+                            @if(etapaPagamento === 'cartao'){
+                                <div class="d-flex align-items-center">
+                                    <input type="radio" name="cartao-forma" value="credito" id="credito">
+                                    <label for="credito">Credito</label>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <input type="radio" name="cartao-forma" value="debito" id="debito">
+                                    <label for="debito">Debito</label>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <input type="radio" name="cartao-forma" value="vale" id="vale">
+                                    <label for="vale">Vale-Alimentação</label>
+                                </div>
+                            }@else if(etapaPagamento === 'pix'){
+                                <div class="d-flex"><i class="ph ph-warning-circle alerta-cor"></i><p class="ms-2">O QR Code Pix vai ser gerado na hora da entrega</p></div>
+                            }@else if(etapaPagamento === 'dinheiro'){
+                                <input type="number" name="" id="" placeholder="Exemplo: R$24,00">
+                            }
+                        </div>
+                    </div>
+                    <div class="box-total">
+                        <hr>
+                        <div class="d-flex justify-content-between">
+                            <p>Frete</p>
+                            <p>R$8</p>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <p>Total</p>
+                            <p>R${{totalComFrete}}</p>
+                        </div>
+                        <div class="button-total button-metade">
+                             <button class="button-border" (click)="voltarParaCesta()"><p>Voltar</p><i class="ph ph-arrow-left ms-2"></i></button>
+                            <button class="" (click)="confirmarPedido()" ><p>Finalizar pedido</p><i class="ph ph-arrow-right ms-2"></i></button>
+                        </div>
+                    </div>
+                </div>
+    
+            }@else if(etapaCesta === 'confirmacao'){
+                <div class="d-flex align-items-center mb-3">
+                    <h1>Cesta</h1>
+                    <i class="ph ph-tote ms-3"></i>
+                </div>
+                <div class="box-finalizado">
+                    <div class="centro">
+                        <h2>Pedido feito som sucesso</h2>
+                        <dotlottie-wc
+                        src="https://lottie.host/87d66e57-b196-4b6c-815c-3ead1bb282f8/QyzVWlvBx7.lottie"
+                        style="width: 300px;height: 300px"
+                        speed="1"
+                        autoplay
+                        ></dotlottie-wc>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>

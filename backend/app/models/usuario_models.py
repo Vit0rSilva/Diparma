@@ -21,3 +21,5 @@ class Usuarios(Base):
     atualizado_em = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
     enderecos = relationship("Enderecos", back_populates="usuario", cascade="all, delete-orphan")
+    carrinhos = relationship("Carrinho", back_populates="usuario", cascade="all, delete-orphan")
+    pedidos = relationship("Pedido", back_populates="usuario", cascade="all, delete-orphan")

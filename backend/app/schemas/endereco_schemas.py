@@ -9,6 +9,7 @@ class EnderecoBase(BaseModel):
     bairro: constr(min_length=1, max_length=100)
     cidade: constr(min_length=1, max_length=100)
     complemento: Optional[constr(max_length=100)] = None
+    endereco_principal: bool = False
     cep: constr(min_length=8, max_length=8)
     lat: Optional[str] = None
     lng: Optional[str] = None
@@ -27,6 +28,7 @@ class EnderecoUpdate(BaseModel):
     cep: Optional[constr(min_length=8, max_length=8)] = None
     lat: Optional[str] = None
     lng: Optional[str] = None
+    endereco_principal: Optional[bool] = None
 
 class EnderecoResponse(EnderecoBase):
     id: int

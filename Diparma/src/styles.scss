@@ -194,3 +194,10 @@ a{
     margin-bottom: 0px !important;
     text-decoration: none!important;
 }
+
+label{
+    color: $texto-corrido-cor;
+    font-size: $texto-corrido-tamanho;
+    @extend .lora;
+    margin-bottom: 0px !important;
+}

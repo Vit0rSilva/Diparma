@@ -4,7 +4,7 @@ from fastapi.exceptions import RequestValidationError
 from fastapi import HTTPException
 
 from app.database import Base, engine
-from app.routers import tipoBebidas_routers, bebidas_routers, pratos_routers, tipoPrato_routers , admins_routers, usuarios_routers, endereco_routers, extra_routers, carrinho_routers
+from app.routers import tipoBebidas_routers, bebidas_routers, pratos_routers, tipoPrato_routers , admins_routers, usuarios_routers, endereco_routers, extra_routers, carrinho_routers, pedido_routers
 from app.middlewares.error_handler import (
     http_exception_handler,
     validation_error_handler,
@@ -39,3 +39,4 @@ app.include_router(pratos_routers.router)
 app.include_router(usuarios_routers.router)
 app.include_router(endereco_routers.router)
 app.include_router(carrinho_routers.router)
+app.include_router(pedido_routers.router)
