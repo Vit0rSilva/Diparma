@@ -1,14 +1,25 @@
+//instalar o venv
+python -m venv venv
+
 //ATIVAR VENV
 venv\Scripts\activate
 
 //DESATIVAR 
 deactivate
 
+//instalar os requeriments
+pip install -r requirements.txt
+
+
 //ATIVAR API
 uvicorn main:app --reload
 
 
 //Rodar as migrations 
+    //inicie o alembic
+        alembic init alembic
+
+
     alembic revision --autogenerate -m "cria tabela administradores"
 
     --dps rode

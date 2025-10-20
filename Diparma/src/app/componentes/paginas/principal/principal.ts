@@ -43,15 +43,14 @@ export class Principal implements OnInit {
       next: (dados) => {
         this.pratos = dados;
         console.log(dados)
+        setTimeout(() => this.initSwiper())
+        
       },
       error: (err) => {
         console.error('Error ao buscar pratos', err);
       }
     });
-    
-  }
-  ngAfterViewInit() {
-    setTimeout(() => this.initSwiper(), 100);
+
   }
   abrirModal(prato: Prato) {
     this.selectedPrato = prato;
@@ -97,7 +96,7 @@ export class Principal implements OnInit {
 
     const swiper = new Swiper('.swiper-carrosel', {
       modules: [Grid, Pagination, Navigation],
-      slidesPerView: 2,
+      slidesPerView: 1,
       spaceBetween: 30,
       initialSlide: 4,
       pagination: {

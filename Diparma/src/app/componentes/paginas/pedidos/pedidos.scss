@@ -1,0 +1,66 @@
+@use '../../../../styles.scss' as *;
+
+
+.img-nav {
+    width: 80px;
+}
+
+.icon-btn {
+    i {
+        color: $primary;
+        font-size: 30px;
+        transition: all 0.5s;
+    }
+
+    &:hover i {
+        color: $primary-apoio;
+    }
+
+    &:active i {
+        color: $primary-pressed;
+    }
+}
+
+.pedido-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+
+    &:hover {
+        transform: translateY(-5px);
+    }
+}
+
+.status-badge {
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.status-em_andamento {
+    background-color: $secondary-apoio;
+    color: white;
+}
+
+.footer-bg {
+    background-color: $primary;
+}
+
+.footer-link {
+    &:hover {
+        color: $secondary-apoio !important;
+    }
+}
+
+
+.button{
+    @extend %button-primary;
+
+}
+
+.novo{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
